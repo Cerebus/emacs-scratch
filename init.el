@@ -57,3 +57,4 @@
 
 ;; language modes
 (require 'my-python)
+(require 'my-yaml)
