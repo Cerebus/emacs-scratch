@@ -1,15 +1,20 @@
-;;; Move the custom file
+;;; This is my emacs.  There are others like it, but this one is mine.
+
+;;; Housekeeping
 (setq custom-file (concat user-emacs-directory "custom.el"))
 
 (when (file-exists-p custom-file)
   (load custom-file))
 
-;; Add my modules to load-path
-(add-to-list 'load-path (concat user-emacs-directory "lisp"))
-
-;; Terminal vs not
 (unless (display-graphic-p)
   (xterm-mouse-mode 1))
+
+(when (and (eq system-type 'darwin)) ; (display-graphic-p))
+  (setq mac-command-modifier 'meta)
+  (setq mac-option-modifier 'option))
+
+;;; Path maintenance.
+(add-to-list 'load-path (concat user-emacs-directory "lisp"))
 
 ;;; Globalism
 (electric-pair-mode 1)
@@ -17,6 +22,8 @@
 (electric-layout-mode 1)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
+(global-visual-line-mode 1)
+(global-display-line-numbers-mode 1)
 
 ;;; Theme parking
 (setq modus-themes-italic-constructs t
@@ -26,9 +33,6 @@
       )
 
 (load-theme 'modus-operandi t)
-
-;;; Some key conventions
-;; (keyboard-translate (kbd "<deletechar>") (kbd "DEL"))
 
 ;;; Package management
 (require 'package)
@@ -59,3 +63,4 @@
 ;; language modes
 (require 'my-python)
 (require 'my-yaml)
+(require 'my-jinja2)
