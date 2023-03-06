@@ -16,7 +16,6 @@
 (require 'my-consult)
 (require 'embark-consult)
 
-(with-eval-after-load 'embark-consult
-  (add-hook 'embark-collect-mode-hook #'consult-preview-at-point-mode))
+(add-hook 'embark-collect-mode-hook #'consult-preview-at-point-mode)
 
 (provide 'my-embark)
