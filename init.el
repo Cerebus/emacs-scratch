@@ -51,6 +51,7 @@
 (require 'my-corfu)
 (require 'my-cape)
 (require 'my-combobulate)
+(require 'my-tabspaces)
 
 ;; IDE all the things
 (require 'my-ide)
