@@ -9,7 +9,11 @@
 (my-tree-sitter-init 'yaml 'yaml-mode 'yaml-mode '("https://github.com/ikatyang/tree-sitter-yaml"))
 
 (add-hook 'yaml-mode-hook #'eglot-ensure)
-; (add-hook 'yaml-mode-hook 'combobulate-mode)
+
+; yaml-ts-mode is crap, and yaml-mode doesn't grok tree-sitter, so we make it so.
+(add-hook 'yaml-mode-hook (lambda ()
+			    (treesit-parser-create 'yaml)
+			    (combobulate-mode)))
 
 ;;; END
 (provide 'my-yaml)
