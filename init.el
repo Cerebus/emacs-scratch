@@ -64,3 +64,4 @@
 (require 'my-python)
 (require 'my-yaml)
 (require 'my-jinja2)
+(require 'my-jinja-yaml)
