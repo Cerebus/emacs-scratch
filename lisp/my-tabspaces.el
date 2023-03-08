@@ -12,7 +12,7 @@
 (customize-set-variable 'tabspaces-include-buffers '("*scratch*"))
 (customize-set-variable 'tabspaces-session nil)
 (customize-set-variable 'tabspaces-session-auto-restore nil)
-
+(customize-set-variable 'tab-bar-new-tab-choice "*scratch*")
 (tabspaces-mode 1)
 
 ;; Filter Buffers for Consult-Buffer
