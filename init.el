@@ -16,6 +16,12 @@
 ;;; Path maintenance.
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
 
+(unless (package-installed-p 'exec-path-from-shell)
+  (package-install 'exec-path-from-shell))
+
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
 ;;; Globalism
 (electric-pair-mode 1)
 (electric-indent-mode 1)
