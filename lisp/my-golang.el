@@ -1,9 +1,11 @@
 ;;; Golang language config
 
 (unless (package-installed-p 'go-mode)
-  (package-install 'go-mode)
+  ;; (package-install 'go-mode)
   (package-install 'go-gen-test)
   (package-install 'gotest))
+
+(my-tree-sitter-init 'go 'go-mode 'go-ts-mode '("https://github.com/smacker/go-tree-sitter" "master" "golang"))
 
 ;; Activate LSP
 (add-hook 'go-mode-hook #'eglot-ensure)
