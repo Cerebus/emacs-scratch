@@ -1,5 +1,15 @@
 ;;; This is my emacs.  There are others like it, but this one is mine.
 
+;;; Package management
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
+(package-initialize)
+
+;; Make package-vc available to use-package
+(unless (package-installed-p 'vc-use-package)
+  (package-vc-install "https://github.com/slotThe/vc-use-package"))
+
 ;;; Housekeeping
 (setq custom-file (concat user-emacs-directory "custom.el"))
 
@@ -40,16 +50,6 @@
       )
 
 (load-theme 'modus-operandi t)
-
-;;; Package management
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-
-(package-initialize)
-
-;; Make package-vc available to use-package
-(unless (package-installed-p 'vc-use-package)
-  (package-vc-install "https://github.com/slotThe/vc-use-package"))
 
 ;;; Modules
 
