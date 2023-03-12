@@ -8,14 +8,14 @@
 (my-tree-sitter-init 'go 'go-mode 'go-ts-mode '("https://github.com/smacker/go-tree-sitter" "master" "golang"))
 
 ;; Activate LSP
-(add-hook 'go-mode-hook #'eglot-ensure)
+(add-hook 'go-ts-mode-hook #'eglot-ensure)
 
 ;; Autoloads just to be sure
 (autoload 'go-mode "go-mode" "A major mode for Golang" t)
 (autoload 'go-gen-test-dwim "go-gen-test" "A package for gotest generation" t)
 (autoload 'go-test-current-test "gotest" "A package for gotest execution" t)
 
-(add-to-list 'auto-mode-alist '("\\.go\'" . go-mode))
+(add-to-list 'auto-mode-alist '("\\.go\'" . go-ts-mode))
 
 ;; Add gotest to embark. 
 (add-to-list 'embark-pre-action-hooks '(go-gen-test-dwim embark--mark-target))
