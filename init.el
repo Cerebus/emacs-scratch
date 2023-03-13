@@ -66,6 +66,7 @@
 
 ;; IDE all the things
 (require 'my-ide)
+(require 'my-hl-todo)
 
 ;; language modes
 (require 'my-python)
