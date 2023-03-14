@@ -1,4 +1,6 @@
 ;;; This is my emacs.  There are others like it, but this one is mine.
+;;; Do this early b/c trust management.
+(require 'my-auth)
 
 ;;; Package management
 (require 'package)
@@ -65,6 +67,7 @@
 (require 'my-tabspaces)
 
 ;; IDE all the things
+(require 'my-eshell)
 (require 'my-ide)
 (require 'my-hl-todo)
 
