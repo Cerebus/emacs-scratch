@@ -43,6 +43,9 @@
 (tool-bar-mode -1)
 (global-visual-line-mode 1)
 (global-display-line-numbers-mode 1)
+(global-whitespace-mode 1)
+
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 ;;; Theme parking
 (setq modus-themes-italic-constructs t
