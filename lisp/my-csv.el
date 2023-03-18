@@ -5,4 +5,4 @@
 
 (autoload 'csv-mode "csv-mode" "A mode for editing CSV files" t)
 
-(provide 'csv-mode)
+(provide 'my-csv)
