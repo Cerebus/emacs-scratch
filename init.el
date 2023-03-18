@@ -1,4 +1,6 @@
 ;;; This is my emacs.  There are others like it, but this one is mine.
+(add-to-list 'load-path (concat user-emacs-directory "lisp"))
+
 ;;; Do this early b/c trust management.
 (require 'my-auth)
 
@@ -26,9 +28,7 @@
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'option))
 
-;;; Path maintenance.
-(add-to-list 'load-path (concat user-emacs-directory "lisp"))
-
+;;; Environmentals.
 (unless (package-installed-p 'exec-path-from-shell)
   (package-install 'exec-path-from-shell))
 
