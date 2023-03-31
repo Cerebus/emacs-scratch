@@ -80,3 +80,6 @@
 (require 'my-jinja2)
 (require 'my-jinja-yaml)
 (require 'my-golang)
+
+;; Apps
+(require 'my-email)
