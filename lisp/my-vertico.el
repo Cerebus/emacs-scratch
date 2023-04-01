@@ -22,6 +22,9 @@
                  #'completion--in-region)
                args))))
 
+(keymap-set vertico-map "DEL" #'vertico-directory-delete-char)
+(keymap-set vertico-map "M-DEL" #'vertico-directory-delete-word)
+
 (vertico-mode 1)
 
 (provide 'my-vertico)
