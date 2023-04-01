@@ -10,14 +10,13 @@
 
 
 ;; Keys
-;;(define-key 'my-open-things-key-map (kbd "e") #'eshell)
+(global-set-key (kbd "C-c o e") #'eshell)
+
 ;;(define-key 'my-open-things-key-map (kbd "t") #'vterm)
 
 ;; Shells go to a popup
-;;(add-to-list 'display-buffer-alist '("\\(?:shell\\|vterm\\)" display-buffer-pop-up-window))
-;;(add-to-list 'popwin:special-display-config '("*vterm*"))
-;;(add-to-list 'popwin:special-display-config '("*eshell*"))
-;;(popwin-mode 1)
+(add-to-list 'display-buffer-alist '("*eshell*" (display-buffer-in-side-window) (side . bottom)))
+
 
 (provide 'my-eshell)
 ;;; my-vterm.el ends here
