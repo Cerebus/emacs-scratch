@@ -50,7 +50,7 @@
 (setq modus-themes-italic-constructs t
       modus-themes-bold-constructs t
       modus-themes-syntax '(alt-syntax)
-      modus-themes-region '(bg-only no-extend)
+      modus-themes-region '(accented bg-only)
       )
 
 (load-theme 'modus-operandi t)
