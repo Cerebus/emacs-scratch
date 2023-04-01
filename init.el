@@ -47,6 +47,17 @@
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 ;;; Theme parking
+(setq-default mode-line-format '("%e" mode-line-front-space
+ (:propertize
+  ("" mode-line-mule-info mode-line-client mode-line-modified mode-line-remote)
+  display
+  (min-width
+   (5.0)))
+ mode-line-frame-identification mode-line-buffer-identification "   " mode-line-position
+ (:eval (project-name (project-current)))
+ (vc-mode vc-mode)
+ "  " mode-line-modes mode-line-misc-info mode-line-end-spaces))
+
 (setq modus-themes-italic-constructs t
       modus-themes-bold-constructs t
       modus-themes-syntax '(alt-syntax)
@@ -66,7 +77,7 @@
 (require 'my-corfu)
 (require 'my-cape)
 (require 'my-combobulate)
-(require 'my-tabspaces)
+; (require 'my-tabspaces)
 (require 'my-helpful)
 
 ;; IDE all the things
