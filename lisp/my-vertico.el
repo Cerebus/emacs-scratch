@@ -3,6 +3,7 @@
 
 (require 'vertico)
 (require 'vertico-directory)
+(require 'vertico-mouse)
 
 (setq minibuffer-prompt-properties
       '(read-only t cursor-intangible t face minibuffer-prompt))
@@ -26,5 +27,6 @@
 (keymap-set vertico-map "M-DEL" #'vertico-directory-delete-word)
 
 (vertico-mode 1)
+(vertico-mouse-mode 1)
 
 (provide 'my-vertico)
