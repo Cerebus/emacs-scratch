@@ -67,6 +67,7 @@
 (require 'my-cape)
 (require 'my-combobulate)
 (require 'my-tabspaces)
+(require 'my-helpful)
 
 ;; IDE all the things
 (require 'my-eshell)
