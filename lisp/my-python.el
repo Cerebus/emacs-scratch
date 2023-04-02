@@ -29,7 +29,7 @@
 
 (add-hook 'pyvenv-post-activate-hooks #'pyvenv-restart-python)
 
-; Integrate pyvenv with pyenv venv
+;; Integrate pyvenv with pyenv venv
 (setenv "WORKON_HOME" "~/.pyenv/versions")
 
 (defun try/pyvenv-workon ()
@@ -55,7 +55,6 @@
 ;;   (package-install 'importmagic))
 
 ;; (add-hook 'python-ts-mode-hook 'importmagic-mode)
-
 
 (defvar-local my-python-shell-from-buffer ""
   "Records originating buffer when switching to python shell.")
