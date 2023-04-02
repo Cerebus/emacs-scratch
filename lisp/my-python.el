@@ -11,7 +11,7 @@
 
 ;;; Baseline
 
-;; Default to tree-sitter concrete mode 
+;; Default to tree-sitter concrete mode
 (my-tree-sitter-init 'python
 		     'python-mode
 		     'python-ts-mode
@@ -56,6 +56,28 @@
 
 ;; (add-hook 'python-ts-mode-hook 'importmagic-mode)
 
+
+(defvar-local my-python-shell-from-buffer ""
+  "Records originating buffer when switching to python shell.")
+
+(defun my-python-shell-save-buffer (oldfun &rest args)
+  (let* ((buf (current-buffer))
+	 (res (apply oldfun args)))
+    (setq-local my-python-shell-from-buffer buf)
+    res))
+
+(advice-add 'python-shell-switch-to-shell :around #'my-python-shell-save-buffer)
+
+(defun my-python-shell-switch-to-buffer ()
+  "Switch back from python shell to last python buffer."
+  (interactive)
+  (if (buffer-live-p my-python-shell-from-buffer)
+      (pop-to-buffer my-python-shell-from-buffer)
+    ))
+
+(with-eval-after-load "python"
+  (define-key inferior-python-mode-map (kbd "C-c C-z") #'my-python-shell-switch-to-buffer)
+  )
+
 ;;; END
 (provide 'my-python)
-
