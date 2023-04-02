@@ -17,6 +17,5 @@
 ;; Shells go to a popup
 (add-to-list 'display-buffer-alist '("*eshell*" (display-buffer-in-side-window) (side . bottom)))
 
-
 (provide 'my-eshell)
 ;;; my-vterm.el ends here
