@@ -1,3 +1,12 @@
+(unless (package-installed-p 'consult-eglot)
+  (package-install 'consult-eglot))
+
+
+(with-eval-after-load "eglot"
+  (require 'consult-eglot)
+  (define-key eglot-mode-map [remap xref-find-apropos] #'consult-eglot-symbols))
+
+
 ;; Example configuration for Consult
 (use-package consult
   :ensure t
@@ -127,5 +136,7 @@
 ;; (setq completion-in-region-function #'consult-completion-in-region)
 ;; (setq consult-narrow-key "<")
 ;; (bind-key (kbd "C-x b") 'consult-buffer)
+
+
 
 (provide 'my-consult)
