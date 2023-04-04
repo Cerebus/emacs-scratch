@@ -92,6 +92,8 @@
 (require 'my-jinja2)
 (require 'my-jinja-yaml)
 (require 'my-golang)
+(require 'my-plantuml)
 
 ;; Apps
 (require 'my-email)
+(require 'my-org)
