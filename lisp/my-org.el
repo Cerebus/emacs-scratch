@@ -1,4 +1,4 @@
-(add-to-list 'org-modules 'org-tempo t)
+(customize-set-variable 'org-modules '(ol-doi ol-w3m ol-bibtex ol-gnus ol-info ol-irc ol-mhe ol-rmail ol-eww org-tempo))
 
 (add-hook 'org-mode-hook
 	  (lambda ()
