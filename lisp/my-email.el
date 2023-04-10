@@ -6,14 +6,7 @@
 
 (autoload 'mu4e "mu4e" "Mu Email client" t)
 
-(defun my-mu4e ()
-  "Open mu4e in a new tabspace."
-  (interactive)
-  (tabspaces-switch-or-create-workspace "mu4e")
-  (mu4e)
-  )
-
-(global-set-key (kbd "C-c o m") #'my-mu4e)
+(global-set-key (kbd "C-c o m") #'mu4e)
 
 (setq mu4e-update-interval 120
       mml-default-encrypt-method "smime"
