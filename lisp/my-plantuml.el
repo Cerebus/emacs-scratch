@@ -6,8 +6,9 @@
 (customize-set-variable 'plantuml-jar-path "~/.local/lib/plantuml.jar")
 (customize-set-variable 'plantuml-exec-mode 'jar)
 
-(if (not (file-exists-p plantuml-jar-path))
-    (plantuml-download-jar))
+(with-eval-after-load 'plantuml-mode
+  (if (not (file-exists-p plantuml-jar-path))
+    (plantuml-download-jar)))
 
 (with-eval-after-load 'org
   (org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t)))
