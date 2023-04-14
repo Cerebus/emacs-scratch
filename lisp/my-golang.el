@@ -1,11 +1,11 @@
 ;;; Golang language config
 
 (unless (package-installed-p 'go-mode)
-  ;; (package-install 'go-mode)
+  (package-install 'go-mode)
   (package-install 'go-gen-test)
   (package-install 'gotest))
 
-(my-tree-sitter-init 'go 'go-mode 'go-ts-mode '("https://github.com/smacker/go-tree-sitter" "master" "golang"))
+(my-tree-sitter-init 'go 'go-mode 'go-mode '("https://github.com/smacker/go-tree-sitter" "master" "golang"))
 
 ;; Activate LSP
 (add-hook 'go-ts-mode-hook #'eglot-ensure)
@@ -17,7 +17,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.go\'" . go-ts-mode))
 
-;; Add gotest to embark. 
+;; Add gotest to embark.
 (add-to-list 'embark-pre-action-hooks '(go-gen-test-dwim embark--mark-target))
 
 (define-key embark-region-map (kbd "g t") #'go-gen-test-dwim)
