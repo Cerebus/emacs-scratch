@@ -9,6 +9,7 @@
 (global-set-key (kbd "C-c o m") #'mu4e)
 
 (setq mu4e-update-interval 120
+      mu4e-read-option-use-builtin t
       mml-default-encrypt-method "smime"
       mml-default-sign-method "smime"
       mml-secure-method "smime"
