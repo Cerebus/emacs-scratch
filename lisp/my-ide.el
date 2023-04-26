@@ -5,4 +5,15 @@
 
 (add-hook 'prog-mode-hook 'format-all-mode)
 
+(defvar-local my/flymake-diagnostic-buffer-name nil)
+
+(defun my/toggle-flymake-diagnostics-buffer ()
+  (interactive)
+  (let ((window-buffer (get-buffer-window (flymake--diagnostics-buffer-name))))
+    (if window-buffer
+        (quit-window t window-buffer)
+      (flymake-show-diagnostics-buffer))))
+
+(global-set-key (kbd "C-c t e") #'my/toggle-flymake-diagnostics-buffer)
+
 (provide 'my-ide)
