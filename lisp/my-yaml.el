@@ -15,5 +15,9 @@
 			    (treesit-parser-create 'yaml)
 			    (combobulate-mode)))
 
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+	       `((yaml-mode yaml-ts-mode) . ("yaml-language-server" "--stdio" :initializationOptions (:yaml (:keyOrdering nil))))))
+
 ;;; END
 (provide 'my-yaml)
