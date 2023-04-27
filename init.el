@@ -78,6 +78,7 @@
 (require 'my-cape)
 (require 'my-combobulate)
 (require 'my-helpful)
+(require 'my-ace-window)
 
 ;; IDE all the things
 (require 'my-eshell)
