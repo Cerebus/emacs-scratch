@@ -1,11 +1,9 @@
 (unless (package-installed-p 'consult-eglot)
   (package-install 'consult-eglot))
 
-
 (with-eval-after-load "eglot"
   (require 'consult-eglot)
   (define-key eglot-mode-map [remap xref-find-apropos] #'consult-eglot-symbols))
-
 
 ;; Example configuration for Consult
 (use-package consult
