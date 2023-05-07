@@ -7,12 +7,18 @@
 (autoload 'mu4e "mu4e" "Mu Email client" t)
 
 (require 'my-visual)
+
+(add-hook 'mu4e-main-mode-hook (lambda ()
+				 (display-line-numbers-mode -1)))
+
 (add-hook 'mu4e-view-mode-hook #'visual-fill-column-mode)
+
 (add-hook 'mu4e-view-mode-hook (lambda ()
 				 (setq visual-fill-column-center-text t)
 				 (visual-line-mode 1)
 				 (adaptive-wrap-prefix-mode)))
 (add-hook 'mu4e-compose-mode-hook #'visual-fill-column-mode)
+
 (add-hook 'mu4e-compose-mode-hook (lambda ()
 				    (setq visual-fill-column-center-text t)
 				    (visual-line-mode 1)
