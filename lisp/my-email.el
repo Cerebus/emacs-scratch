@@ -6,7 +6,6 @@
 
 (autoload 'mu4e "mu4e" "Mu Email client" t)
 
-
 (require 'my-visual)
 (add-hook 'mu4e-view-mode-hook #'visual-fill-column-mode)
 (add-hook 'mu4e-view-mode-hook (lambda ()
@@ -20,7 +19,11 @@
 				    (auto-fill-mode -1)
 				    (adaptive-wrap-prefix-mode)))
 
-(global-set-key (kbd "C-c o m") #'mu4e)
+;; (global-set-key (kbd "C-c o m") #'mu4e)
+(global-set-key (kbd "C-c o m") (lambda ()
+				  (interactive)
+				  (tab-bar-switch-to-tab "*mu4e-main*")
+				  (mu4e)))
 
 (setopt mu4e-completing-read-function completing-read-function)
 
