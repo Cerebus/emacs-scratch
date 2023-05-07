@@ -11,10 +11,12 @@
 (add-hook 'mu4e-view-mode-hook #'visual-fill-column-mode)
 (add-hook 'mu4e-view-mode-hook (lambda ()
 				 (setq visual-fill-column-center-text t)
+				 (visual-line-mode 1)
 				 (adaptive-wrap-prefix-mode)))
 (add-hook 'mu4e-compose-mode-hook #'visual-fill-column-mode)
 (add-hook 'mu4e-compose-mode-hook (lambda ()
 				    (setq visual-fill-column-center-text t)
+				    (visual-line-mode 1)
 				    (auto-fill-mode -1)
 				    (adaptive-wrap-prefix-mode)))
 
