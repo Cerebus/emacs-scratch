@@ -28,6 +28,7 @@
 (setopt mu4e-completing-read-function completing-read-function)
 
 (with-eval-after-load "mu4e"
+  (advice-add 'mu4e-quit :before #'tab-close)
   (add-to-list 'mailcap-mime-extensions '(".docx" . "application/vnd.openxmlformats-officedocument.wordprocessingml.document"))
   (add-to-list 'mailcap-mime-extensions '(".pptx" . "application/vnd.openxmlformats-officedocument.presentationml.presentation"))
   (add-to-list 'mailcap-mime-extensions '(".xlsx" . "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"))
