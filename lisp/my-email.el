@@ -45,9 +45,6 @@
   (setq epg-pinentry-mode nil)
   (epa-file-enable)
   (require 'smtpmail)
-  (with-eval-after-load "mm-decode"
-    (add-to-list 'mm-discouraged-alternatives "text/html")
-    (add-to-list 'mm-discouraged-alternatives "text/richtext"))
   (require 'mu4e-icalendar)
   (mu4e-icalendar-setup)
   (gnus-icalendar-org-setup)
