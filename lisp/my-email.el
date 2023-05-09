@@ -39,13 +39,13 @@
   (tab-close)
   (call-interactively 'mu4e-quit))
 
+;; Autoload magic doesn't seem to work here, wtf?
+(autoload #'mu4e-icalendar-setup "mu4e-icalendar.el" "iCalendar integration")
+
 (with-eval-after-load "mu4e"
   (substitute-key-definition 'mu4e-quit 'my/mu4e-quit mu4e-main-mode-map)
   (mailcap-parse-mimetypes (concat user-emacs-directory "mime.types"))
-  (setq epg-pinentry-mode nil)
   (epa-file-enable)
-  (require 'smtpmail)
-  (require 'mu4e-icalendar)
   (mu4e-icalendar-setup)
   (gnus-icalendar-org-setup)
   ;; Customize the trash mark to also mark as read.
@@ -57,40 +57,6 @@
               :action (lambda (docid msg target)
                         (mu4e--server-move docid (mu4e--mark-check-target target) "+S-u-N"))))
 
-  (setq mu4e-update-interval 120
-      mu4e-read-option-use-builtin t
-      mml-default-encrypt-method "smime"
-      mml-default-sign-method "smime"
-      mml-secure-method "smime"
-      mml-secure-smime-encrypt-to-self t
-      mml-secure-smime-sign-with-sender t
-      mm-verify-option 'always
-      mm-smime-use 'epg
-      mm-decrypt-option 'always
-      gnus-buttonized-mime-types '("multipart/encrypted" "multipart/signed")
-      smime-CA-directory (expand-file-name "~/.trust")
-      mu4e-headers-fields '((:maildir . 8)
-                            (:human-date . 12)
-                            (:flags . 6)
-                            (:from-or-to . 25)
-                            (:subject))
-      mu4e-headers-show-threads t
-      mu4e-headers-sort-direction 'ascending
-      mu4e-headers-include-related nil
-      alert-default-style 'notifier
-      mu4e-change-filenames-when-moving t
-      message-kill-buffer-on-exit t
-      message-sendmail-f-is-evil t
-      ;; message-sendmail-extra-arguments '("--read-envelope-from")
-      ;; message-send-mail-function #'message-send-mail-with-sendmail
-      ;; mail-specify-envelope-from t
-      ;; mail-envelope-from 'header
-      ;; message-sendmail-envelope-from 'header
-      ;; sendmail-program (executable-find "msmtp")
-      send-mail-function 'smtpmail-send-it
-      message-send-mail-function 'smtpmail-send-it
-      smtpmail-stream-type 'starttls
-      )
-  )
+  (setq mm-smime-use 'epg))
 
 (provide 'my-email)
