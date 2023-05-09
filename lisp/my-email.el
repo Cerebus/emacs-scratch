@@ -41,9 +41,7 @@
 
 (with-eval-after-load "mu4e"
   (substitute-key-definition 'mu4e-quit 'my/mu4e-quit mu4e-main-mode-map)
-  (add-to-list 'mailcap-mime-extensions '(".docx" . "application/vnd.openxmlformats-officedocument.wordprocessingml.document"))
-  (add-to-list 'mailcap-mime-extensions '(".pptx" . "application/vnd.openxmlformats-officedocument.presentationml.presentation"))
-  (add-to-list 'mailcap-mime-extensions '(".xlsx" . "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"))
+  (mailcap-parse-mimetypes)
   (setq epg-pinentry-mode nil)
   (epa-file-enable)
   (require 'smtpmail)
