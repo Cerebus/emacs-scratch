@@ -51,30 +51,7 @@
   (require 'mu4e-icalendar)
   (mu4e-icalendar-setup)
   (gnus-icalendar-org-setup)
-  (add-to-list 'mu4e-bookmarks
-               '(:name "Flagged"
-                       :query "flag:flagged"
-                       :key ?f
-                       )
-               )
-  (add-to-list 'mu4e-bookmarks
-             '(:name "Unhandled total"
-                     :query "maildir:/INBOX"
-                     :key ?I
-                     )
-             )
-  (add-to-list 'mu4e-bookmarks
-               '(:name "Unhandled this week"
-                       :query "maildir:/INBOX and date:1w..today"
-                       :key ?W
-                       )
-               )
-  (add-to-list 'mu4e-bookmarks
-               '(:name "Unhandled today"
-                       :query "maildir:/INBOX AND date:today"
-                       :key ?T
-                       )
-               )
+
   (setf (alist-get 'trash mu4e-marks)
         (list :char '("d" . "▼")
               :prompt "dtrash"
