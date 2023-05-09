@@ -48,17 +48,15 @@
   (require 'mu4e-icalendar)
   (mu4e-icalendar-setup)
   (gnus-icalendar-org-setup)
-
+  ;; Customize the trash mark to also mark as read.
   (setf (alist-get 'trash mu4e-marks)
         (list :char '("d" . "▼")
               :prompt "dtrash"
               :dyn-target (lambda (target msg)
                             (mu4e-get-trash-folder msg))
               :action (lambda (docid msg target)
-                        ;; Here's the main difference to the regular trash mark,
-                        ;; no +T before -N so the message is not marked as
-                        ;; IMAP-deleted:
-                        (mu4e--server-move docid (mu4e--mark-check-target target) "-u-N")))) ; Mark trash as read
+                        (mu4e--server-move docid (mu4e--mark-check-target target) "+S-u-N"))))
+
   (setq mu4e-update-interval 120
       mu4e-read-option-use-builtin t
       mml-default-encrypt-method "smime"
