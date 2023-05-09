@@ -34,8 +34,13 @@
 
 (setopt mu4e-completing-read-function completing-read-function)
 
+(defun my/mu4e-quit ()
+  (interactive)
+  (tab-close)
+  (call-interactively 'mu4e-quit))
+
 (with-eval-after-load "mu4e"
-  (advice-add 'mu4e-quit :before #'tab-close)
+  (substitute-key-definition 'mu4e-quit 'my/mu4e-quit mu4e-main-mode-map)
   (add-to-list 'mailcap-mime-extensions '(".docx" . "application/vnd.openxmlformats-officedocument.wordprocessingml.document"))
   (add-to-list 'mailcap-mime-extensions '(".pptx" . "application/vnd.openxmlformats-officedocument.presentationml.presentation"))
   (add-to-list 'mailcap-mime-extensions '(".xlsx" . "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"))
