@@ -3,4 +3,6 @@
 
 (global-set-key (kbd "C-x o") #'ace-window)
 
+(customize-set-variable 'aw-scope 'frame)
+
 (provide 'my-ace-window)
