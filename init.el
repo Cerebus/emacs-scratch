@@ -93,6 +93,7 @@
 (require 'my-jinja-yaml)
 (require 'my-golang)
 (require 'my-plantuml)
+(require 'my-markdown)
 
 ;; Apps
 (require 'my-email)
