@@ -56,7 +56,6 @@
                             (mu4e-get-trash-folder msg))
               :action (lambda (docid msg target)
                         (mu4e--server-move docid (mu4e--mark-check-target target) "+S-u-N"))))
-
-  (setq mm-smime-use 'epg))
+  (setq mml-smime-use 'epg))
 
 (provide 'my-email)
