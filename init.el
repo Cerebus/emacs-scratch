@@ -94,6 +94,7 @@
 (require 'my-golang)
 (require 'my-plantuml)
 (require 'my-markdown)
+(require 'my-docker)
 
 ;; Apps
 (require 'my-email)
