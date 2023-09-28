@@ -7,4 +7,6 @@
 			   (if (char-equal c ?<)
 			       t ,electric-pair-inhibit-predicate c)))))
 
+(add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
+
 (provide 'my-org)
