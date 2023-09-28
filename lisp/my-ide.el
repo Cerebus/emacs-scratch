@@ -15,5 +15,5 @@
       (flymake-show-diagnostics-buffer))))
 
 (global-set-key (kbd "C-c t e") #'my/toggle-flymake-diagnostics-buffer)
-
+(global-auto-revert-mode t)
 (provide 'my-ide)
