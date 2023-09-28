@@ -7,6 +7,7 @@
 ;;; Package management
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/") t)
 
 (package-initialize)
 
@@ -96,6 +97,7 @@
 (require 'my-markdown)
 (require 'my-docker)
 (require 'my-json)
+(require 'my-pdf)
 
 ;; Apps
 (require 'my-email)
