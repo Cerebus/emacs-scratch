@@ -9,4 +9,8 @@
 
 (add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
 
+(add-hook 'org-mode-hook #'visual-line-mode)
+(add-hook 'org-mode-hook #'visual-fill-column-mode)
+(add-hook 'org-mode-hook #'adaptive-wrap-prefix-mode)
+
 (provide 'my-org)
