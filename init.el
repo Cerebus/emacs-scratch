@@ -95,6 +95,7 @@
 (require 'my-plantuml)
 (require 'my-markdown)
 (require 'my-docker)
+(require 'my-json)
 
 ;; Apps
 (require 'my-email)
