@@ -55,19 +55,18 @@
               :dyn-target (lambda (target msg)
                             (mu4e-get-trash-folder msg))
               :action (lambda (docid msg target)
-                        (mu4e--server-move docid (mu4e--mark-check-target target) "+S-u-N"))))
+                        (mu4e--server-move docid (mu4e--mark-check-target target) "+S-F-u-N"))))
   (setq mml-smime-use 'epg)
-  (add-to-list 'mu4e-marks
-	       '(unflag-refile
-		 :char "R"
-		 :prompt "ufile"
-		 :dyn-target (lambda (target msg)
-			       (mu4e-get-refile-folder msg))
-		 :action (lambda (docid msg target)
-			   (mu4e--server-move docid
-					      (mu4e--mark-check-target target)
-					      "-F-N"))
-		 ))
+  (setf (alist-get 'refile mu4e-marks)
+	(list :char '("r" . "▶")
+	      :prompt "refile"
+	      :dyn-target (lambda (target msg)
+			    (mu4e-get-refile-folder msg))
+	      :action (lambda (docid msg target)
+			(mu4e--server-move docid
+					   (mu4e--mark-check-target target)
+					   "-F-N"))
+	      ))
   (defun my-mu4e-unflag-and-file ()
     "Unflag and refile a message."
     (interactive)
