@@ -5,6 +5,9 @@
 (unless (package-installed-p 'ob-mermaid)
   (package-install 'ob-mermaid))
 
+(unless (package-installed-p 'mermaid-mode)
+  (package-install 'mermaid-mode))
+
 (add-to-list 'auto-mode-alist '("\\.p(lant)?uml\\'" . plantuml-mode))
 
 (customize-set-variable 'plantuml-jar-path "~/.local/lib/plantuml.jar")
