@@ -19,5 +19,6 @@
 (add-hook 'embark-collect-mode-hook #'consult-preview-at-point-mode)
 
 (define-key embark-expression-map "d" #'delete-pair)
+(add-to-list 'embark-pre-action-hooks '(delete-pair embark--beginning-of-target))
 
 (provide 'my-embark)
