@@ -4,7 +4,7 @@
 
 (autoload 'yaml-mode "yaml-mode" "A Major mode for YAML" t)
 
-(add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("[^\\.][^j][^2]\\.ya?ml". yaml-mode))
 
 (my-tree-sitter-init 'yaml 'yaml-mode 'yaml-mode '("https://github.com/ikatyang/tree-sitter-yaml"))
 

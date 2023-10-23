@@ -5,6 +5,6 @@
 
 (autoload 'poly-ansible-mode "poly-ansible" "A polymode for Jinja2 in YAML." t)
 
-(add-to-list 'auto-mode-alist '("\\.j2.yaml\\'" . poly-ansible-mode))
+(add-to-list 'auto-mode-alist '("\\.j2.ya?ml\\'" . poly-ansible-mode))
 
 (provide 'my-jinja-yaml)
