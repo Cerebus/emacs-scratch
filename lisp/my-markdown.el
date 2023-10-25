@@ -18,6 +18,7 @@
 	`(region ,(buffer-substring start end) . (,start . ,end))))))
 
 (with-eval-after-load 'embark
-  (add-to-list 'embark-target-finders 'my-markdown-fenced-code-block))
+  (add-to-list 'embark-target-finders 'my-markdown-fenced-code-block)
+  (add-to-list 'embark-around-action-hooks '(mermaid-compile-region embark--mark-target)))
 
 (provide 'my-markdown)
