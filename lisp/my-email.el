@@ -76,12 +76,13 @@
 
 (defun my-message-cited-region ()
   "Target a region of contiguous cited lines starting with the line at point."
-  (save-excursion
-    (let* ((start (progn (move-beginning-of-line nil) (point)))
-	   (end (progn (while (progn (forward-line 1)
-				     (looking-at message-yank-cited-prefix)))
-		       (move-end-of-line nil) (point))))
-      `(region ,(buffer-substring start end) . (,start . ,end)))))
+  (if (derived-mode-p 'message-mode)
+      (save-excursion
+	(let* ((start (progn (move-beginning-of-line nil) (point)))
+	       (end (progn (while (progn (forward-line 1)
+					 (looking-at message-yank-cited-prefix)))
+			   (move-end-of-line nil) (point))))
+	  `(region ,(buffer-substring start end) . (,start . ,end))))))
 
 (with-eval-after-load 'embark
   (add-to-list 'embark-target-finders 'my-message-cited-region))
