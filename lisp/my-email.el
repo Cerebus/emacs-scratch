@@ -75,7 +75,7 @@
   )
 
 (defun my-message-cited-region ()
-  "Target a region of contiguous cited lines starting with the line at point."
+  "Target a region of contiguous message-mode cited lines starting with the line at point."
   (if (derived-mode-p 'message-mode)
       (save-excursion
 	(let* ((start (progn (move-beginning-of-line nil) (point)))
