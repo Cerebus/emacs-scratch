@@ -98,6 +98,7 @@
 (require 'my-docker)
 (require 'my-json)
 (require 'my-pdf)
+(require 'my-rego)
 
 ;; Apps
 (require 'my-email)
