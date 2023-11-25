@@ -43,6 +43,7 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (global-display-line-numbers-mode 1)
+(auto-insert-mode t)
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
