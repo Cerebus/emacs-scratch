@@ -47,7 +47,7 @@
 
 ;;; Server -- Gonna use server-mode alla time, but I want it to exit
 ;;; when I exit the terminal
-(server-mode t)
+(server-start)
 (bind-key (kbd "C-x C-c") #'save-buffers-kill-emacs)
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
