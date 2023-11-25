@@ -45,6 +45,11 @@
 (global-display-line-numbers-mode 1)
 (auto-insert-mode t)
 
+;;; Server -- Gonna use server-mode alla time, but I want it to exit
+;;; when I exit the terminal
+(server-mode t)
+(bind-key (kbd "C-x C-c") #'save-buffers-kill-emacs)
+
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 ;;; Theme parking
