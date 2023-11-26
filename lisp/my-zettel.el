@@ -37,6 +37,9 @@
 (require 'org-protocol)
 
 ;; Variables.
+(defvar-keymap my-zettelkasten-map
+  :doc "Zettelkasten keymap.")
+
 (defgroup my-zettelkasten nil
   "A Zettelkasten manager.")
 
@@ -69,6 +72,10 @@ This value will be used for `org-cite-global-bibliography'"
   (interactive)
   (find-file my-zettelkasten-bibliography))
 
+(defun my-zettelkasten-open-dir ()
+  (interactive)
+  (find-file my-zettelkasten-dir))
+
 ;; Define biblio actions to add to the Zettelkasten reference file.
 (with-eval-after-load 'biblio-core
   (defun my-biblio--selection-add-to-zettelkasten-bibliography-callback (bibtex entry)
@@ -91,9 +98,12 @@ This value will be used for `org-cite-global-bibliography'"
     (biblio--selection-forward-bibtex #'my-biblio--selection-add-to-zettelkasten-bibliography-callback)))
 
 ;; Keyindings.
-(bind-key (kbd "C-c z c") #'org-capture)
-(bind-key (kbd "C-c z n") #'denote-open-or-create)
-(bind-key (kbd "C-c z o") #'my-zettelkasten-open-bibliography)
+(global-set-key (kbd "C-c z") my-zettelkasten-map)
+(bind-key (kbd "c") #'org-capture 'my-zettelkasten-map)
+(bind-key (kbd "d") #'my-zettelkasten-open-dir 'my-zettelkasten-map)
+(bind-key (kbd "n") #'denote-open-or-create 'my-zettelkasten-map)
+(bind-key (kbd "o") #'my-zettelkasten-open-bibliography 'my-zettelkasten-map)
+
 (with-eval-after-load 'biblio-core
   ;; Redefine biblio's insert actions to add to the Zettelkasten reference file.
   (bind-key (kbd "I") #'my-selection-add-to-zettelkasten-bibliography-quit 'biblio-selection-mode-map)
