@@ -35,6 +35,7 @@
 ;; Process dependencies.
 (server-start)
 (require 'org-protocol)
+(require 'denote)
 
 ;; Variables.
 (defvar-keymap my-zettelkasten-map
@@ -125,6 +126,9 @@ This value will be used for `org-cite-global-bibliography'"
 		 (file my-zettelkasten-bibliography)
 		 "@misc{,\n\ttitle = \"%:description\",\n\tauthor = \"%?\",\n\turl = \"%:link\",\n\tyear = %<%Y>,\n\tnote = \"Online; Accessed %<%d %B %Y>\"\n}"
 		 :empty-lines 1 :prepare-finalize bibtex-clean-entry)))
+
+;; Hooks
+(add-hook 'dired-mode-hook 'denote-dired-mode)
 
 ;; Package
 (provide 'my-zettel)
