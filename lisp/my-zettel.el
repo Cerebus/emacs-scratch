@@ -66,6 +66,7 @@ This value will be used for `org-cite-global-bibliography'"
 (customize-set-variable 'bibtex-dialect 'biblatex)
 (customize-set-variable 'denote-directory my-zettelkasten-dir)
 (customize-set-variable 'org-cite-global-bibliography my-zettelkasten-bibliography)
+(customize-set-variable 'denote-prompts '(title keywords signature))
 
 ;; Methods.
 (defun my-zettelkasten-open-bibliography ()
@@ -129,6 +130,7 @@ This value will be used for `org-cite-global-bibliography'"
 
 ;; Hooks
 (add-hook 'dired-mode-hook 'denote-dired-mode)
+(add-hook 'before-save-hook #'org-update-all-dblocks)
 
 ;; Package
 (provide 'my-zettel)
