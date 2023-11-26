@@ -109,3 +109,4 @@
 ;; Apps
 (require 'my-email)
 (require 'my-org)
+(require 'my-zettel)
