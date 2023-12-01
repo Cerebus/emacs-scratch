@@ -63,12 +63,13 @@ This value will be used for `org-cite-global-bibliography'"
   :group 'my-zettelkasten
   :set-after '(my-zettelkasten-dir))
 
-(defun my-zettelkasten-embark-collect-sequence-sort ()
+(defun my-zettelkasten-sequence-sort ()
   "Sort an embark collection of Zettelkasten by sequence number."
   (interactive)
   (let* ((collect-regex "^\*Embark Collect: find-file - ")
 	 (buffer (buffer-name)))
-    (if (org-string-match-p collect-regex buffer)
+    (if (or (org-string-match-p collect-regex buffer)
+	    (eq major-mode 'dired-mode))
 	(let* ((collection (replace-regexp-in-string collect-regex "" buffer))
 	       (dir (expand-file-name collection)))
 	  (if (string-match-p my-zettelkasten-dir dir)
@@ -129,7 +130,10 @@ This value will be used for `org-cite-global-bibliography'"
 
 (with-eval-after-load 'embark
   ;; Add an embark collection action to sort Zettels
-  (bind-key (kbd "z") #'my-zettelkasten-embark-collect-sequence-sort 'embark-collect-mode-map))
+  (bind-key (kbd "z") #'my-zettelkasten-sequence-sort 'embark-collect-mode-map))
+
+(with-eval-after-load 'dired
+  (bind-key (kbd "z") #'my-zettelkasten-sequence-sort 'dired-mode-map))
 
 ;; Capture templates.
 (with-eval-after-load 'org-capture
