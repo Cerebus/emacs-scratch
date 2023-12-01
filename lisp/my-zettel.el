@@ -63,6 +63,21 @@ This value will be used for `org-cite-global-bibliography'"
   :group 'my-zettelkasten
   :set-after '(my-zettelkasten-dir))
 
+(customize-set-variable 'bibtex-dialect 'biblatex)
+(customize-set-variable 'denote-directory my-zettelkasten-dir)
+(customize-set-variable 'org-cite-global-bibliography `(,my-zettelkasten-bibliography))
+(customize-set-variable 'denote-prompts '(title keywords signature))
+
+;; Methods.
+(defun my-zettelkasten-open-bibliography ()
+  "Visit the Zettelkasten bibliography."
+  (interactive)
+  (find-file my-zettelkasten-bibliography))
+
+(defun my-zettelkasten-open-dir ()
+  (interactive)
+  (find-file my-zettelkasten-dir))
+
 (defun my-zettelkasten-sequence-sort ()
   "Sort a Zettelkasten directory listing by sequence number.
 
@@ -80,21 +95,6 @@ Currently restricted to embark-collect and dired-mode in `my-zettelkasten-dir'.
 		(setq inhibit-read-only t)
 		(sort-regexp-fields nil "^.*$" "==.*--" (point-min) (point-max))
 		(setq inhibit-read-only nil)))))))
-
-(customize-set-variable 'bibtex-dialect 'biblatex)
-(customize-set-variable 'denote-directory my-zettelkasten-dir)
-(customize-set-variable 'org-cite-global-bibliography `(,my-zettelkasten-bibliography))
-(customize-set-variable 'denote-prompts '(title keywords signature))
-
-;; Methods.
-(defun my-zettelkasten-open-bibliography ()
-  "Visit the Zettelkasten bibliography."
-  (interactive)
-  (find-file my-zettelkasten-bibliography))
-
-(defun my-zettelkasten-open-dir ()
-  (interactive)
-  (find-file my-zettelkasten-dir))
 
 ;; Define biblio actions to add to the Zettelkasten reference file.
 (with-eval-after-load 'biblio-core
