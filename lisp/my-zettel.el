@@ -79,22 +79,11 @@ This value will be used for `org-cite-global-bibliography'"
   (find-file my-zettelkasten-dir))
 
 (defun my-zettelkasten-sequence-sort ()
-  "Sort a Zettelkasten directory listing by sequence number.
-
-Currently restricted to embark-collect and dired-mode in `my-zettelkasten-dir'.
-"
+  "Sort buffer of Zettelkasten filenames by signature."
   (interactive)
-  (let* ((collect-regex "^\*Embark Collect: find-file - ")
-	 (buffer (buffer-name)))
-    (if (or (org-string-match-p collect-regex buffer)
-	    (eq major-mode 'dired-mode))
-	(let* ((collection (replace-regexp-in-string collect-regex "" buffer))
-	       (dir (expand-file-name collection)))
-	  (if (string-match-p my-zettelkasten-dir dir)
-	      (progn
-		(setq inhibit-read-only t)
-		(sort-regexp-fields nil "^.*$" "==.*--" (point-min) (point-max))
-		(setq inhibit-read-only nil)))))))
+  (setq inhibit-read-only t)
+  (sort-regexp-fields nil "^.*$" "==.*--" (point-min) (point-max))
+  (setq inhibit-read-only nil))
 
 ;; Define biblio actions to add to the Zettelkasten reference file.
 (with-eval-after-load 'biblio-core
