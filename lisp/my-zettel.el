@@ -65,7 +65,7 @@ This value will be used for `org-cite-global-bibliography'"
 
 (customize-set-variable 'bibtex-dialect 'biblatex)
 (customize-set-variable 'denote-directory my-zettelkasten-dir)
-(customize-set-variable 'org-cite-global-bibliography my-zettelkasten-bibliography)
+(customize-set-variable 'org-cite-global-bibliography `(,my-zettelkasten-bibliography))
 (customize-set-variable 'denote-prompts '(title keywords signature))
 
 ;; Methods.
