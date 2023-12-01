@@ -63,6 +63,20 @@ This value will be used for `org-cite-global-bibliography'"
   :group 'my-zettelkasten
   :set-after '(my-zettelkasten-dir))
 
+(defun my-zettelkasten-embark-collect-sequence-sort ()
+  "Sort an embark collection of Zettelkasten by sequence number."
+  (interactive)
+  (let* ((collect-regex "^\*Embark Collect: find-file - ")
+	 (buffer (buffer-name)))
+    (if (org-string-match-p collect-regex buffer)
+	(let* ((collection (replace-regexp-in-string collect-regex "" buffer))
+	       (dir (expand-file-name collection)))
+	  (if (string-match-p my-zettelkasten-dir dir)
+	      (progn
+		(setq inhibit-read-only t)
+		(sort-regexp-fields nil "^.*$" "==.*--" (point-min) (point-max))
+		(setq inhibit-read-only nil)))))))
+
 (customize-set-variable 'bibtex-dialect 'biblatex)
 (customize-set-variable 'denote-directory my-zettelkasten-dir)
 (customize-set-variable 'org-cite-global-bibliography `(,my-zettelkasten-bibliography))
@@ -112,6 +126,10 @@ This value will be used for `org-cite-global-bibliography'"
   (bind-key (kbd "I") #'my-selection-add-to-zettelkasten-bibliography-quit 'biblio-selection-mode-map)
   (bind-key (kbd "C-y") #'my-selection-add-to-zettelkasten-bibliography-quit 'biblio-selection-mode-map)
   (bind-key (kbd "i") #'my-selection-add-to-zettelkasten-bibliography 'biblio-selection-mode-map))
+
+(with-eval-after-load 'embark
+  ;; Add an embark collection action to sort Zettels
+  (bind-key (kbd "z") #'my-zettelkasten-embark-collect-sequence-sort 'embark-collect-mode-map))
 
 ;; Capture templates.
 (with-eval-after-load 'org-capture
