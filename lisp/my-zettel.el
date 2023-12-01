@@ -105,6 +105,7 @@ This value will be used for `org-cite-global-bibliography'"
 (bind-key (kbd "d") #'my-zettelkasten-open-dir 'my-zettelkasten-map)
 (bind-key (kbd "n") #'denote-open-or-create 'my-zettelkasten-map)
 (bind-key (kbd "o") #'my-zettelkasten-open-bibliography 'my-zettelkasten-map)
+(bind-key (kbd "r") #'biblio-lookup 'my-zettelkasten-map)
 
 (with-eval-after-load 'biblio-core
   ;; Redefine biblio's insert actions to add to the Zettelkasten reference file.
