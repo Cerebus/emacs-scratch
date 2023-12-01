@@ -64,7 +64,10 @@ This value will be used for `org-cite-global-bibliography'"
   :set-after '(my-zettelkasten-dir))
 
 (defun my-zettelkasten-sequence-sort ()
-  "Sort an embark collection of Zettelkasten by sequence number."
+  "Sort a Zettelkasten directory listing by sequence number.
+
+Currently restricted to embark-collect and dired-mode in `my-zettelkasten-dir'.
+"
   (interactive)
   (let* ((collect-regex "^\*Embark Collect: find-file - ")
 	 (buffer (buffer-name)))
