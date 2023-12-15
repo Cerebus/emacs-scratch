@@ -32,6 +32,9 @@
 (unless (package-installed-p 'biblio)
   (package-install 'biblio))
 
+(unless (package-installed-p 'citar)
+  (package-install 'citar))
+
 ;; Process dependencies.
 (server-start)
 (require 'org-protocol)
@@ -66,7 +69,8 @@ This value will be used for `org-cite-global-bibliography'"
 (customize-set-variable 'bibtex-dialect 'biblatex)
 (customize-set-variable 'denote-directory my-zettelkasten-dir)
 (customize-set-variable 'org-cite-global-bibliography `(,my-zettelkasten-bibliography))
-(customize-set-variable 'denote-prompts '(title keywords signature))
+(customize-set-variable 'denote-prompts '(signature title keywords))
+(customize-set-variable 'citar-bibliography `(,my-zettelkasten-bibliography))
 
 ;; Methods.
 (defun my-zettelkasten-open-bibliography ()
@@ -84,6 +88,12 @@ This value will be used for `org-cite-global-bibliography'"
   (setq inhibit-read-only t)
   (sort-regexp-fields nil "^.*$" "==.*--" (point-min) (point-max))
   (setq inhibit-read-only nil))
+
+(defun my-zettelkasten-clean-references ()
+  "Prepare the org-capture reference for saving."
+  (interactive)
+  (bibtex-clean-entry)
+  (bibtex-format-entry))
 
 ;; Define biblio actions to add to the Zettelkasten reference file.
 (with-eval-after-load 'biblio-core
@@ -140,12 +150,13 @@ This value will be used for `org-cite-global-bibliography'"
   (add-to-list 'org-capture-templates
 	       '("w" "New reference (with org-protocol)" plain
 		 (file my-zettelkasten-bibliography)
-		 "@misc{,\n\ttitle = \"%:description\",\n\tauthor = \"%?\",\n\turl = \"%:link\",\n\tyear = %<%Y>,\n\tnote = \"Online; Accessed %<%d %B %Y>\"\n}"
-		 :empty-lines 1 :prepare-finalize bibtex-clean-entry)))
+		 "@misc{,\n  title = \"%:description\",\n  author = \"%?\",\n  url = \"%:link\",\n  year = %<%Y>,\n  note = \"Online; Accessed %<%d %B %Y>\"\n}"
+		 :empty-lines 1 :prepare-finalize my-zettelkasten-clean-references)))
 
 ;; Hooks
 (add-hook 'dired-mode-hook 'denote-dired-mode)
 (add-hook 'before-save-hook #'org-update-all-dblocks)
+(add-hook 'org-mode-hook 'citar-capf-setup)
 
 ;; Package
 (provide 'my-zettel)
