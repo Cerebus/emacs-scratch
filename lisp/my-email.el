@@ -47,7 +47,7 @@
   (mailcap-parse-mimetypes (concat user-emacs-directory "mime.types") t)
   (epa-file-enable)
   (mu4e-icalendar-setup)
-  (gnus-icalendar-org-setup)
+  ;; (gnus-icalendar-org-setup)
   ;; Customize the trash mark to also mark as read.
   (setf (alist-get 'trash mu4e-marks)
         (list :char '("d" . "▼")
