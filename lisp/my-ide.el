@@ -19,6 +19,7 @@
 
 ;; When I open a new frame, I like to have it default to scratch
 (defun my/switch-to-scratch (frame)
+  (select-frame frame)
   (switch-to-buffer "*scratch*"))
 
 (add-hook 'after-make-frame-functions #'my/switch-to-scratch)
