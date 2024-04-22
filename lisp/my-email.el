@@ -78,7 +78,10 @@
   "Target a region of contiguous message-mode cited lines starting with the line at point."
   (if (derived-mode-p 'message-mode)
       (save-excursion
-	(let* ((start (progn (move-beginning-of-line nil) (point)))
+	(let* ((start (progn (move-beginning-of-line nil)
+			     (while (progn (forward-line -1)
+					   (looking-at message-yank-cited-prefix)))
+			     (forward-line 1) (point)))
 	       (end (progn (while (progn (forward-line 1)
 					 (looking-at message-yank-cited-prefix)))
 			   (move-end-of-line nil) (point))))
