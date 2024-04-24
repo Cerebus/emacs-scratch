@@ -24,10 +24,12 @@
 (unless (display-graphic-p)
   (xterm-mouse-mode 1))
 
-;; TODO - need a keymapping that works in Alacritty, X, and NSwindow
-(when (and (eq system-type 'darwin)) ; (display-graphic-p))
-  (setq mac-command-modifier 'meta)
-  (setq mac-option-modifier 'option))
+;; TODO - need a keymapping that works in Alacritty, iTerm2, xterm, X, and NSwindow
+(when (eq system-type 'darwin)
+  (setq ns-command-modifier 'meta
+	ns-option-modifier 'super
+	ns-control-modifier 'control
+	ns-function-modifier 'hyper))
 
 ;;; Environmentals.
 (unless (package-installed-p 'exec-path-from-shell)
