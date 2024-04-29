@@ -1,9 +1,22 @@
 (unless (package-installed-p 'consult-eglot)
   (package-install 'consult-eglot))
 
+(unless (package-installed-p 'consult-eglot-embark)
+  (package-install 'consult-eglot-embark))
+
+(unless (package-installed-p 'consult-flyspell)
+  (package-install 'consult-flyspell))
+
+(define-key goto-map (kbd "s") #'consult-flyspell)
+
 (with-eval-after-load "eglot"
   (require 'consult-eglot)
   (define-key eglot-mode-map [remap xref-find-apropos] #'consult-eglot-symbols))
+
+(with-eval-after-load 'embark
+  (with-eval-after-load 'consult-eglot
+    (require 'consult-eglot-embark)
+    (consult-eglot-embark-mode)))
 
 ;; Example configuration for Consult
 (use-package consult
