@@ -3,7 +3,13 @@
 (unless (package-installed-p 'format-all)
   (package-install 'format-all))
 
-(add-hook 'prog-mode-hook 'format-all-mode)
+(add-hook 'prog-mode-hook 'format-all-ensure-formatter)
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+(add-hook 'prog-mode-hook (lambda ()
+			    (add-hook 'before-save-hook 'eglot-format-buffer nil t)))
+
+(with-eval-after-load "flyspell"
+  (define-key flyspell-mode-map (kbd "C-.") nil))
 
 (defvar-local my/flymake-diagnostic-buffer-name nil)
 
