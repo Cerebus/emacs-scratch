@@ -48,6 +48,7 @@
 (auto-insert-mode t)
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
+(add-hook 'text-mode-hook #'flyspell-mode)
 
 ;;; Theme parking
 (setq-default mode-line-format '("%e" mode-line-front-space
