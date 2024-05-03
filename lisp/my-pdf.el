@@ -2,7 +2,8 @@
   (package-install 'pdf-tools)
   (pdf-tools-install))
 
-(pdf-loader-install)
-(defalias 'doc-view-goto-page 'pdf-view-goto-page)
+(pdf-tools-install)
+
+(add-hook 'pdf-view-mode-hook (lambda () (display-line-numbers-mode -1)))
 
 (provide 'my-pdf)
