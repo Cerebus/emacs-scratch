@@ -45,10 +45,11 @@
 (add-hook 'python-ts-mode-hook #'try/pyvenv-workon)
 
 ;; isort
-(unless (package-installed-p 'py-isort)
-  (package-install 'py-isort))
+;; (unless (package-installed-p 'py-isort)
+;;   (package-install 'py-isort))
 
-(add-hook 'before-save-hook 'py-isort-before-save)
+;; (add-hook 'python-ts-mode-hook
+;; 	  (lambda () (add-hook 'before-save-hook 'py-isort-buffer nil 'local)))
 
 ;; ;; importmagic
 ;; (unless (package-installed-p 'importmagic)
@@ -60,23 +61,28 @@
   "Records originating buffer when switching to python shell.")
 
 (defun my-python-shell-save-buffer (oldfun &rest args)
+  "Record the current shell for `my-python-shell-switch-to-buffer'."
   (let* ((buf (current-buffer))
 	 (res (apply oldfun args)))
     (setq-local my-python-shell-from-buffer buf)
     res))
-
-(advice-add 'python-shell-switch-to-shell :around #'my-python-shell-save-buffer)
 
 (defun my-python-shell-switch-to-buffer ()
   "Switch back from python shell to last python buffer."
   (interactive)
   (if (buffer-live-p my-python-shell-from-buffer)
       (pop-to-buffer my-python-shell-from-buffer)
+    (let ((proc (run-python)))
+      (pop-to-buffer (process-buffer proc)))
     ))
 
 (with-eval-after-load "python"
+  (define-key python-ts-mode-map (kbd "C-c C-z") #'my-python-shell-switch-to-buffer)
   (define-key inferior-python-mode-map (kbd "C-c C-z") #'my-python-shell-switch-to-buffer)
   )
+
+(advice-add 'python-shell-switch-to-shell :around #'my-python-shell-save-buffer)
+(advice-add 'my-python-shell-switch-to-buffer :around #'my-python-shell-save-buffer)
 
 ;;; END
 (provide 'my-python)
