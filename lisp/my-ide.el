@@ -23,12 +23,21 @@
 (global-set-key (kbd "C-c t e") #'my/toggle-flymake-diagnostics-buffer)
 (global-auto-revert-mode t)
 
-;; When I open a new frame, I like to have it default to scratch
-(defun my/switch-to-scratch (frame)
-  (select-frame frame)
-  (switch-to-buffer "*scratch*"))
+;; When creating a new frame or tab, open with the scratch buffer.
+(defun my/switch-to-scratch (&rest args)
+  "Select scratch buffer, used for hooks and advice."
+  (switch-to-buffer "*scratch*" t))
 
-(add-hook 'after-make-frame-functions #'my/switch-to-scratch)
+(defalias 'my/make-frame-command #'make-frame-command)
+(defalias 'my/tab-new #'tab-new)
+
+;; Perform the actual switch with advice rather than hooks b/c we want tools like project.el to be able to control the
+;; displayed buffer.
+(advice-add 'my/make-frame-command :after #'my/switch-to-scratch)
+(advice-add 'my/tab-new :after #'my/switch-to-scratch)
+
+(define-key ctl-x-5-map (kbd "2") #'my/make-frame-command)
+(define-key tab-prefix-map (kbd "2") #'my/tab-new)
 
 ;; Set polymode to dispatch LSPs stuff to the correct major mode indirect buffer.
 ;; https://github.com/polymode/polymode/issues/305#issuecomment-1018700437
