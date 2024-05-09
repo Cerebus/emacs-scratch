@@ -5,6 +5,8 @@
   (package-vc-install "https://github.com/tecosaur/org-glossary.git"))
 
 (customize-set-variable 'org-modules '(ol-doi ol-w3m ol-bibtex ol-gnus ol-info ol-irc ol-mhe ol-rmail ol-eww org-tempo))
+(customize-set-variable 'org-startup-folded 'nofold)
+(customize-set-variable 'org-startup-with-inline-images t)
 
 (require 'org-glossary)
 
