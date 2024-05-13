@@ -23,6 +23,7 @@
 ;; Create and maintain a local Zettelkasten using denote, org-cite,
 ;; biblio, and bibtex.
 
+;; TODO: consider `citar-denote'.
 ;;; Code:
 
 ;; Package dependencies.
