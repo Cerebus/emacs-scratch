@@ -23,6 +23,8 @@
 (global-set-key (kbd "C-c t e") #'my/toggle-flymake-diagnostics-buffer)
 (global-auto-revert-mode t)
 
+(customize-set-variable 'eldoc-echo-area-use-multiline-p 1)
+
 ;; When creating a new frame or tab, open with the scratch buffer.
 (defun my/switch-to-scratch (&rest args)
   "Select scratch buffer, used for hooks and advice."
