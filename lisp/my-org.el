@@ -8,6 +8,31 @@
 (customize-set-variable 'org-startup-folded 'nofold)
 (customize-set-variable 'org-startup-with-inline-images t)
 
+(with-eval-after-load 'ox-latex
+  (add-to-list 'org-latex-classes
+	       '("mitretr"
+		 "\\documentclass[12pt]{mitretr}
+\\usepackage[style=ieee,sorting=none]{biblatex}
+\\usepackage[inkscapelatex=false]{svg}
+\\usepackage[colorlinks,linkcolor=blue,citecolor=blue,urlcolor=red,plainpages=false,pdfusetitle]{hyperref}
+[NO-DEFAULT-PACKAGES]"
+		 ("\\section{%s}" . "\\section*{%s}")
+		 ("\\subsection{%s}" . "\\subsection*{%s}")
+		 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+		 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+		 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+  (customize-set-variable 'org-latex-subtitle-separate t)
+  (customize-set-variable 'org-latex-subtitle-format "\\subtitle{%s}")
+  (customize-set-variable 'org-latex-pdf-process '("latexmk -f -pdf -%latex -shell-escape -interaction=nonstopmode -output-directory=%o %f")))
+
+(with-eval-after-load 'org-glossary
+  (org-glossary-set-export-spec 'latex 'glossary
+    :backref ""
+    :backref-seperator "")
+  (org-glossary-set-export-spec 'latex 'acronym 
+    :backref ""
+    :backref-seperator ""))
+
 (require 'org-glossary)
 
 (add-hook 'org-mode-hook (lambda ()
