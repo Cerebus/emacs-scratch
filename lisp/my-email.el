@@ -43,8 +43,10 @@
 (autoload #'mu4e-icalendar-setup "mu4e-icalendar.el" "iCalendar integration")
 
 (with-eval-after-load "mu4e"
+  (require 'mailcap)
   (substitute-key-definition 'mu4e-quit 'my/mu4e-quit mu4e-main-mode-map)
   (mailcap-parse-mimetypes (concat user-emacs-directory "mime.types") t)
+  (mailcap-parse-mailcap (concat user-emacs-directory "mailcaps"))
   (epa-file-enable)
   (mu4e-icalendar-setup)
   ;; (gnus-icalendar-org-setup)
