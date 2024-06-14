@@ -21,7 +21,7 @@
   (not (member lang '("plantuml" "mermaid"))))
 
 (with-eval-after-load 'org
-  (org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t) (mermaid . t) (scheme . t)))
+  (org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t) (mermaid . t) (scheme . t) (ditaa . t) (dot . t)))
   (setq org-plantuml-jar-path plantuml-jar-path)
   (setq org-confirm-babel-evaluate #'my-org-confirm-babel-evaluate))
 
