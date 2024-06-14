@@ -1,0 +1,3 @@
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; open %s
+application/vnd.openxmlformats-officedocument.presentationml.presentation; open %s
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; open %s
