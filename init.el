@@ -58,7 +58,7 @@
   (min-width
    (5.0)))
  mode-line-frame-identification mode-line-buffer-identification "   " mode-line-position
- (:eval (project-name (project-current)))
+ (:eval (if (project-current) (project-name (project-current)) ""))
  (vc-mode vc-mode)
  "  " mode-line-modes mode-line-misc-info mode-line-end-spaces))
 
