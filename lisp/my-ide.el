@@ -8,6 +8,9 @@
 (add-hook 'prog-mode-hook (lambda ()
 			    (add-hook 'before-save-hook 'eglot-format-buffer nil t)))
 
+(with-eval-after-load 'eglot
+  (setq eglot-report-progress nil))
+
 (with-eval-after-load "flyspell"
   (define-key flyspell-mode-map (kbd "C-.") nil))
 
