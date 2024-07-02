@@ -21,6 +21,8 @@
 (add-hook 'python-ts-mode-hook 'combobulate-mode)
 (add-hook 'python-ts-mode-hook 'eglot-ensure)
 
+(add-hook 'python-ts-mode-hook (lambda () (add-to-list 'format-all-formatters '(("Python" (black) (isort))))))
+
 ;;; Add-ons
 
 ;; pyvenv
