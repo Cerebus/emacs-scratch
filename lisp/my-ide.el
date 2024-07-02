@@ -3,10 +3,11 @@
 (unless (package-installed-p 'format-all)
   (package-install 'format-all))
 
-(add-hook 'prog-mode-hook 'format-all-ensure-formatter)
+(add-hook 'prog-mode-hook 'format-all-mode)
+(add-hook 'format-all-mode-hook 'format-all-ensure-formatter)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
-(add-hook 'prog-mode-hook (lambda ()
-			    (add-hook 'before-save-hook 'eglot-format-buffer nil t)))
+;; (add-hook 'prog-mode-hook (lambda ()
+;; 			    (add-hook 'before-save-hook 'eglot-format-buffer nil t)))
 
 (with-eval-after-load 'eglot
   (setq eglot-report-progress nil))
