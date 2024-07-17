@@ -48,5 +48,6 @@
 (add-hook 'org-mode-hook #'adaptive-wrap-prefix-mode)
 (add-hook 'org-mode-hook #'org-fragtog-mode)
 (add-hook 'org-mode-hook #'flyspell-mode)
+(add-hook 'org-mode-hook #'org-glossary-mode)
 
 (provide 'my-org)
