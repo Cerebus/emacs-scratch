@@ -155,7 +155,7 @@ This value will be used for `org-cite-global-bibliography'"
   title = {%:description},
   author = {%?},
   url = {%:link},
-  urldate = {%<%d %B %Y>},
+  urldate = {%<%Y-%m-%d>},
   date = {%<%Y>}
 }"
 		 :empty-lines 1 :prepare-finalize my-zettelkasten-clean-references)))
