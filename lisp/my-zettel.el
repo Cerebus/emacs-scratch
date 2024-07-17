@@ -151,7 +151,13 @@ This value will be used for `org-cite-global-bibliography'"
   (add-to-list 'org-capture-templates
 	       '("w" "New reference (with org-protocol)" plain
 		 (file my-zettelkasten-bibliography)
-		 "@misc{,\n  title = \"%:description\",\n  author = \"%?\",\n  url = \"%:link\",\n  year = %<%Y>,\n  note = \"Online; Accessed %<%d %B %Y>\"\n}"
+		 "@online{,
+  title = {%:description},
+  author = {%?},
+  url = {%:link},
+  urldate = {%<%d %B %Y>},
+  date = {%<%Y>}
+}"
 		 :empty-lines 1 :prepare-finalize my-zettelkasten-clean-references)))
 
 ;; Hooks
