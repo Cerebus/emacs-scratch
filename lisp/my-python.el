@@ -48,6 +48,12 @@
 
 (add-hook 'python-ts-mode-hook #'try/pyvenv-workon)
 
+(with-eval-after-load 'org
+  (add-to-list 'org-babel-load-languages '(python . t))
+  (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages)
+  (setq org-src-preserve-indentation nil
+	org-edit-src-content-indentation 0))
+
 ;; isort
 ;; (unless (package-installed-p 'py-isort)
 ;;   (package-install 'py-isort))
