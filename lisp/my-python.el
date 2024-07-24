@@ -23,8 +23,6 @@
 (add-hook 'python-ts-mode-hook (lambda ()
 			    (add-hook 'before-save-hook 'eglot-format-buffer nil t)))
 
-;; (add-hook 'python-ts-mode-hook (lambda () (add-to-list 'format-all-formatters '(("Python" (black) (isort))))))
-
 ;;; Add-ons
 
 ;; pyvenv
