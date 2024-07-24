@@ -9,6 +9,9 @@
 
 ;; Activate LSP
 (add-hook 'go-ts-mode-hook #'eglot-ensure)
+(add-hook 'go-ts-mode-hook (lambda ()
+			    (add-hook 'before-save-hook 'eglot-format-buffer nil t)))
+
 
 ;; Autoloads just to be sure
 (autoload 'go-mode "go-mode" "A major mode for Golang" t)

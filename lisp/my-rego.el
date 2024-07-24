@@ -8,5 +8,7 @@
 	       `(rego-mode . ("regols"))))
 
 (add-hook 'rego-mode-hook #'eglot-ensure)
+(add-hook 'rego-mode-hook (lambda ()
+			    (add-hook 'before-save-hook 'eglot-format-buffer nil t)))
 
 (provide 'my-rego)

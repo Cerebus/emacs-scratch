@@ -9,6 +9,8 @@
 (my-tree-sitter-init 'yaml 'yaml-mode 'yaml-mode '("https://github.com/ikatyang/tree-sitter-yaml"))
 
 (add-hook 'yaml-mode-hook #'eglot-ensure)
+(add-hook 'yaml-mode-hook (lambda ()
+			    (add-hook 'before-save-hook 'eglot-format-buffer nil t)))
 
 ;; yaml-ts-mode is (currently) crap, and yaml-mode doesn't grok tree-sitter, so we make it so.
 (setq auto-mode-alist (delete '("\\.ya?ml\\'" . yaml-ts-mode) auto-mode-alist))
