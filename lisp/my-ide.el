@@ -13,6 +13,8 @@
 (with-eval-after-load "flyspell"
   (define-key flyspell-mode-map (kbd "C-.") nil))
 
+(define-key global-map (kbd "s-i") 'completion-at-point)
+
 (defvar-local my/flymake-diagnostic-buffer-name nil)
 
 (defun my/toggle-flymake-diagnostics-buffer ()
