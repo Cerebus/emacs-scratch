@@ -1,13 +1,11 @@
 ;;; Python mode stuff.
 
 ;; Python package dependencies
-;; - black
-;; - flake8
-;; - isort
-;; - importmagic
-
-;; TODO
-;; - blacken code formatting?
+;; - python-lsp-server["flake8", "rope"]
+;; - pylsp-mypy
+;; - python-lsp-black
+;; - python-lsp-isort
+;; - flake8-builtins
 
 ;;; Baseline
 
