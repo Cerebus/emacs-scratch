@@ -20,7 +20,12 @@
 
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
-	       `((yaml-mode yaml-ts-mode) . ("yaml-language-server" "--stdio" :initializationOptions (:yaml (:keyOrdering :json-false))))))
+	       `((yaml-mode yaml-ts-mode)
+		 . ("yaml-language-server" "--stdio"
+		    :initializationOptions (:yaml (:keyOrdering :json-false)
+						   :schemaStore (:enable t)
+						   :format (:enable t)
+						   )))))
 
 ;;; END
 (provide 'my-yaml)
