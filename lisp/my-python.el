@@ -19,7 +19,8 @@
 (add-hook 'python-ts-mode-hook 'combobulate-mode)
 (add-hook 'python-ts-mode-hook 'eglot-ensure)
 (add-hook 'python-ts-mode-hook (lambda ()
-			    (add-hook 'before-save-hook 'eglot-format-buffer nil t)))
+				 (add-hook 'before-save-hook 'eglot-format-buffer nil t)
+				 (set-fill-column 88)))
 
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
@@ -29,7 +30,7 @@
 				     :pyflakes (:enabled :json-false)
 				     :mccabe (:enabled :json-false)
 				     :flake8 (:enabled t
-					      :maxLineLength 88))
+					      :maxLineLength 88)) ;b/c black default
 			   :configurationSources ["flake8"]))))))
 ;;; Add-ons
 
