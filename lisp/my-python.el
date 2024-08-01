@@ -23,6 +23,16 @@
 (add-hook 'python-ts-mode-hook (lambda ()
 			    (add-hook 'before-save-hook 'eglot-format-buffer nil t)))
 
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+             `((python-mode python-ts-mode)
+	       . ("pylsp" :initializationOptions
+		  (:pylsp (:plugins (:pycodestyle (:enabled nil)
+				     :pyflakes (:enabled nil)
+				     :mccabe (:enabled nil)
+				     :flake8 (:enabled t
+					      :maxLineLength 88))
+			   :configurationSources ["flake8"]))))))
 ;;; Add-ons
 
 ;; pyvenv
