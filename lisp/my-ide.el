@@ -3,6 +3,16 @@
 (unless (package-installed-p 'format-all)
   (package-install 'format-all))
 
+(unless (package-installed-p 'yasnippet)
+  (package-install 'yasnippet))
+
+(unless (package-installed-p 'yasnippet-snippets)
+  (package-install 'yasnippet-snippets))
+
+;; Snippet support in general, but mainly for eglot
+(require 'yasnippet)
+(yas-global-mode 1)
+
 ;; (add-hook 'prog-mode-hook 'format-all-mode)
 ;; (add-hook 'format-all-mode-hook 'format-all-ensure-formatter)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
