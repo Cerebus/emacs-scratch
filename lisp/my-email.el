@@ -2,7 +2,7 @@
 
 ;; Fun complications; mu4e distributes with mu, so installation varies a bit.
 (when (eq system-type 'darwin)
-  (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu")) ; brew links it here
+  (add-to-list 'load-path "/opt/homebrew/share/emacs/site-lisp/mu/mu4e/")) ; brew links it here
 
 (autoload 'mu4e "mu4e" "Mu Email client" t)
 
@@ -39,11 +39,9 @@
   (tab-close)
   (call-interactively 'mu4e-quit))
 
-;; Autoload magic doesn't seem to work here, wtf?
-(autoload #'mu4e-icalendar-setup "mu4e-icalendar.el" "iCalendar integration")
-
 (with-eval-after-load "mu4e"
   (require 'mailcap)
+  (require 'mu4e-icalendar)
   (substitute-key-definition 'mu4e-quit 'my/mu4e-quit mu4e-main-mode-map)
   (mailcap-parse-mimetypes (concat user-emacs-directory "mime.types") t)
   (mailcap-parse-mailcap (concat user-emacs-directory "mailcaps"))
