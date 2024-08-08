@@ -30,7 +30,7 @@
   (org-glossary-set-export-spec 'latex 'glossary
     :backref ""
     :backref-seperator "")
-  (org-glossary-set-export-spec 'latex 'acronym 
+  (org-glossary-set-export-spec 'latex 'acronym
     :backref ""
     :backref-seperator ""))
 
