@@ -26,12 +26,8 @@
   (add-to-list 'eglot-server-programs
              `((python-mode python-ts-mode)
 	       . ("pylsp" :initializationOptions
-		  (:pylsp (:plugins (:pycodestyle (:enabled :json-false)
-				     :pyflakes (:enabled :json-false)
-				     :mccabe (:enabled :json-false)
-				     :flake8 (:enabled t
-					      :maxLineLength 88)) ;b/c black default
-			   :configurationSources ["flake8"]))))))
+		  (:pylsp (:plugins (:ruff (:format ["I"]))))))))
+
 ;;; Add-ons
 
 ;; pyvenv
