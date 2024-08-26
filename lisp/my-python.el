@@ -26,7 +26,8 @@
   (add-to-list 'eglot-server-programs
              `((python-mode python-ts-mode)
 	       . ("pylsp" :initializationOptions
-		  (:pylsp (:plugins (:ruff (:format ["I"]))))))))
+		  (:pylsp (:plugins (:ruff (:format ["I"]
+					    :extendSelect ["I" "A"]))))))))
 
 ;;; Add-ons
 
