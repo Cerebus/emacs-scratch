@@ -47,6 +47,9 @@
 (defalias 'my/make-frame-command #'make-frame-command)
 (defalias 'my/tab-new #'tab-new)
 
+;; Close tab when killing project buffers
+(advice-add 'project-kill-buffers :after 'tab-close)
+
 ;; Perform the actual switch with advice rather than hooks b/c we want tools like project.el to be able to control the
 ;; displayed buffer.
 (advice-add 'my/make-frame-command :after #'my/switch-to-scratch)
