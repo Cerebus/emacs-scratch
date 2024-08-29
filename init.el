@@ -45,6 +45,7 @@
 (tool-bar-mode -1)
 (global-display-line-numbers-mode 1)
 (auto-insert-mode t)
+(define-key global-map (kbd "s-$") #'ispell-word)
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 (add-hook 'text-mode-hook #'flyspell-mode)
