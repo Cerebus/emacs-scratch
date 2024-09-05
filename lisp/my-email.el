@@ -73,6 +73,7 @@
     (mu4e-headers-mark-and-next 'unflag-refile))
   (define-key mu4e-headers-mode-map (kbd "_") 'my-mu4e-unflag-and-file)
   (define-key mu4e-headers-mode-map (kbd "f") #'mu4e-view-mark-for-refile)
+  (define-key mu4e-view-mode-map (kbd "f") #'mu4e-view-mark-for-refile)
   (define-key mu4e-compose-minor-mode-map (kbd "r") #'mu4e-compose-reply)
   (define-key mu4e-compose-minor-mode-map (kbd "R") #'mu4e-compose-wide-reply)
   )
