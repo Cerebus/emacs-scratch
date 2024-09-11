@@ -37,6 +37,8 @@
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
+(setenv "EDITOR" "emacsclient")
+
 ;;; Globalism
 (electric-pair-mode 1)
 (electric-indent-mode 1)
