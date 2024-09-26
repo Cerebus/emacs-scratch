@@ -50,4 +50,6 @@
 (add-hook 'org-mode-hook #'flyspell-mode)
 (add-hook 'org-mode-hook #'org-glossary-mode)
 
+(bind-key (kbd "C-c (") #'org-mark-ring-goto 'org-mode-map)
+
 (provide 'my-org)
