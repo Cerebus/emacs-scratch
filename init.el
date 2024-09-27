@@ -105,6 +105,7 @@
 (require 'my-json)
 (require 'my-pdf)
 (require 'my-rego)
+(require 'my-tex)
 
 ;; Apps
 (require 'my-email)
