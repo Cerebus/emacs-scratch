@@ -26,4 +26,4 @@
   (setq org-confirm-babel-evaluate #'my-org-confirm-babel-evaluate))
 
 
-(provide 'my-plantuml)
+(provide 'my-diagramming)

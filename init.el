@@ -99,7 +99,7 @@
 (require 'my-jinja2)
 (require 'my-jinja-yaml)
 (require 'my-golang)
-(require 'my-plantuml)
+(require 'my-diagramming)
 (require 'my-markdown)
 (require 'my-docker)
 (require 'my-json)
