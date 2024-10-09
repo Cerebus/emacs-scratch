@@ -27,6 +27,13 @@ user's home directory."
 	((> (prefix-numeric-value arg) 4) (my/do-buffer-eshell "~/"))
 	(t (project-eshell))))
 
+(customize-set-variable 'project-switch-commands
+			'((project-find-file "Find file")
+			  (project-find-regexp "Find regexp")
+			  (project-find-dir "Find directory")
+			  (project-vc-dir "VC-Dir")
+			  (my/project-eshell "Eshell")))
+
 ;; Keys
 (global-set-key (kbd "C-x p e") #'my/project-eshell)
 

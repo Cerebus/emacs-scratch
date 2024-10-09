@@ -57,6 +57,7 @@
 
 (define-key ctl-x-5-map (kbd "2") #'my/make-frame-command)
 (define-key tab-prefix-map (kbd "2") #'my/tab-new)
+(define-key project-prefix-map (kbd "R") #'project-find-regexp)
 
 ;; Set polymode to dispatch LSPs stuff to the correct major mode indirect buffer.
 ;; https://github.com/polymode/polymode/issues/305#issuecomment-1018700437
