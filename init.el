@@ -106,6 +106,7 @@
 (require 'my-pdf)
 (require 'my-rego)
 (require 'my-tex)
+(require 'my-cmake)
 
 ;; Apps
 (require 'my-email)
