@@ -1,3 +1,15 @@
+;; Temp variables for other modes to load into.
+;; (defcustom my/org-babel-load-languages '((emacs-lisp . t))
+;;   "Org Babel languages."
+;;   :type '(alist :key-type (symbol)
+;; 		:value-type (boolean)))
+
+;; (defcustom my/org-src-lang-modes '(("C" . c))
+;;   "Org Babel languages."
+;;   :type '(alist :key-type (string)
+;; 		:value-type (symbol)))
+
+;; Extra packages
 (unless (package-installed-p 'org-fragtog)
   (package-install 'org-fragtog))
 
@@ -40,6 +52,14 @@
            (setq-local electric-pair-inhibit-predicate
                    `(lambda (c)
                   (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
+
+;; Init org-babel
+(add-hook 'org-mode-hook (lambda ()
+			   (org-babel-do-load-languages 'org-babel-do-load-languages org-babel-load-languages)))
+
+;; ;; Init src modes
+;; (add-hook 'org-mode-hook (lambda ()
+;; 			   (mapc (lambda (x) (#'my/customize-add-to-list 'org-src-lang-modes x)) my/org-src-lang-modes)))
 
 (add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
 

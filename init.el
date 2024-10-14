@@ -72,6 +72,12 @@
 
 (load-theme 'modus-operandi t)
 
+;;; Helpers
+
+(defun my/customize-add-to-list (sym value)
+  "Add to a customizable variable's list"
+  (customize-set-variable sym (add-to-list sym value)))
+
 ;;; Modules
 
 ;; Install and configure core
@@ -86,6 +92,11 @@
 (require 'my-helpful)
 (require 'my-ace-window)
 (require 'my-visual)
+
+;; Apps
+(require 'my-org)			; Keep this relatively early.
+(require 'my-email)
+(require 'my-zettel)
 
 ;; IDE all the things
 (require 'my-eshell)
@@ -107,8 +118,3 @@
 (require 'my-rego)
 (require 'my-tex)
 (require 'my-cmake)
-
-;; Apps
-(require 'my-email)
-(require 'my-org)
-(require 'my-zettel)

@@ -51,12 +51,17 @@
            (car (split-string (buffer-string)))))))))
 
 (add-hook 'python-ts-mode-hook #'try/pyvenv-workon)
+(add-to-list 'org-babel-load-languages '(python . t))
+(add-to-list 'org-src-lang-modes '("python" . python-ts))
 
-(with-eval-after-load 'org
-  (add-to-list 'org-babel-load-languages '(python . t))
-  (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages)
-  (setq org-src-preserve-indentation nil
-	org-edit-src-content-indentation 0))
+;; (my/customize-add-to-list 'my/org-babel-load-languages '(python . t))
+;; (my/customize-add-to-list 'my/org-src-lang-modes '("python" . python))
+
+;; (with-eval-after-load 'org
+;;   (add-to-list 'org-babel-load-languages '(python . t))
+;;   (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages)
+;;   (setq org-src-preserve-indentation nil
+;; 	org-edit-src-content-indentation 0))
 
 ;; isort
 ;; (unless (package-installed-p 'py-isort)
