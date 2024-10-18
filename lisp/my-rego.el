@@ -5,7 +5,9 @@
 
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
-	       `(rego-mode . ("regols"))))
+	       `(rego-mode . ("regal" "language-server"))))
+
+
 
 (add-hook 'rego-mode-hook #'eglot-ensure)
 (add-hook 'rego-mode-hook (lambda ()
