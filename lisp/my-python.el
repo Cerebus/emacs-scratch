@@ -1,12 +1,8 @@
 ;;; Python mode stuff.
 
 ;; Python package dependencies
-;; - python-lsp-server["flake8", "rope"]
+;; - python-lsp-ruff
 ;; - pylsp-mypy
-;; - python-lsp-black
-;; - python-lsp-isort
-;; - flake8-builtins
-
 ;;; Baseline
 
 ;; Default to tree-sitter concrete mode
