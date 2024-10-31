@@ -73,7 +73,7 @@
 
 ;;; Key issues
 (defvar-keymap my/keymap :doc "My leader map")
-(defvar my/leader-key "C-c m")
+(defvar my/leader-key "C-c SPC")
 (keymap-global-set my/leader-key my/keymap)
 
 ;;; Helpers
