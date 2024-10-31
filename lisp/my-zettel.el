@@ -118,7 +118,7 @@ This value will be used for `org-cite-global-bibliography'"
     (biblio--selection-forward-bibtex #'my-biblio--selection-add-to-zettelkasten-bibliography-callback)))
 
 ;; Keyindings.
-(global-set-key (kbd "C-c z") my-zettelkasten-map)
+(keymap-set my/keymap "z" my-zettelkasten-map)
 (bind-key (kbd "c") #'org-capture 'my-zettelkasten-map)
 (bind-key (kbd "d") #'my-zettelkasten-open-dir 'my-zettelkasten-map)
 (bind-key (kbd "n") #'denote-open-or-create 'my-zettelkasten-map)

@@ -16,14 +16,13 @@
 ;; (add-hook 'prog-mode-hook 'format-all-mode)
 ;; (add-hook 'format-all-mode-hook 'format-all-ensure-formatter)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (with-eval-after-load 'eglot
   (setq eglot-report-progress nil))
 
 (with-eval-after-load "flyspell"
   (define-key flyspell-mode-map (kbd "C-.") nil))
-
-(define-key global-map (kbd "s-i") 'completion-at-point)
 
 (defvar-local my/flymake-diagnostic-buffer-name nil)
 
@@ -34,7 +33,6 @@
         (quit-window t window-buffer)
       (flymake-show-diagnostics-buffer))))
 
-(global-set-key (kbd "C-c t e") #'my/toggle-flymake-diagnostics-buffer)
 (global-auto-revert-mode t)
 
 (customize-set-variable 'eldoc-echo-area-use-multiline-p 1)

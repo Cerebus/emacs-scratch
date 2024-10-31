@@ -16,6 +16,28 @@
 (unless (package-installed-p 'org-glossary)
   (package-vc-install "https://github.com/tecosaur/org-glossary.git"))
 
+(unless (package-installed-p 'flymake-proselint)
+  (package-install 'flymake-proselint))
+
+(with-eval-after-load 'flymake
+  (flymake-proselint-setup))
+
+(add-hook 'text-mode-hook 'flymake-mode)
+(add-hook 'text-mode-hook 'flymake-proselint-setup)
+
+(defun my/org-ispell-setup ()
+  (make-local-variable 'ispell-skip-region-alist)
+  (add-to-list 'ispell-skip-region-alist '(org-property-drawer-re))
+  (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_SRC" . "#\\+END_SRC"))
+  (add-to-list 'ispell-skip-region-alist '("#\\+" . ".$"))
+  (add-to-list 'ispell-skip-region-alist '("\\[" . ".\\]"))
+  (add-to-list 'ispell-skip-region-alist '("~" "~"))
+  (add-to-list 'ispell-skip-region-alist '("=" "="))
+  (add-to-list 'ispell-skip-region-alist '("<<" ">>"))
+  (add-to-list 'ispell-skip-region-alist '("^#\\+BEGIN_SRC" . "^#\\+END_SRC")))
+
+(add-hook 'org-mode-hook #'my/org-ispell-setup)
+
 (customize-set-variable 'org-modules '(ol-doi ol-w3m ol-bibtex ol-gnus ol-info ol-irc ol-mhe ol-rmail ol-eww org-tempo))
 (customize-set-variable 'org-startup-folded 'nofold)
 (customize-set-variable 'org-startup-with-inline-images t)
@@ -64,7 +86,7 @@
 (add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
 
 (add-hook 'org-mode-hook #'visual-line-mode)
-(add-hook 'org-mode-hook #'visual-fill-column-mode)
+;; (add-hook 'org-mode-hook #'visual-fill-column-mode)
 (add-hook 'org-mode-hook #'adaptive-wrap-prefix-mode)
 (add-hook 'org-mode-hook #'org-fragtog-mode)
 (add-hook 'org-mode-hook #'flyspell-mode)

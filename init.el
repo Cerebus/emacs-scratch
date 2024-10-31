@@ -24,6 +24,7 @@
   (xterm-mouse-mode 1))
 
 ;; TODO - need a keymapping that works in Alacritty, iTerm2, xterm, X, and NSwindow
+;; ITerm2: remap modifiers option <--> command (preferences, key, remap modifiers)
 (when (eq system-type 'darwin)
   (setq ns-command-modifier 'meta
 	ns-option-modifier 'super
@@ -45,9 +46,7 @@
 (electric-layout-mode 1)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-(global-display-line-numbers-mode 1)
 (auto-insert-mode t)
-(define-key global-map (kbd "s-$") #'ispell-word)
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 (add-hook 'text-mode-hook #'flyspell-mode)
@@ -71,6 +70,11 @@
       )
 
 (load-theme 'modus-operandi t)
+
+;;; Key issues
+(defvar my/keymap :doc "My leader map")
+(defvar my/leader-key "C-c m")
+(keymap-global-set my/leader-key my/keymap)
 
 ;;; Helpers
 

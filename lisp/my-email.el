@@ -8,29 +8,27 @@
 
 (require 'my-visual)
 
-(add-hook 'mu4e-main-mode-hook (lambda ()
-				 (display-line-numbers-mode -1)))
-
 (add-hook 'mu4e-view-mode-hook #'visual-fill-column-mode)
 
 (add-hook 'mu4e-view-mode-hook (lambda ()
 				 (setq visual-fill-column-center-text t)
 				 (visual-line-mode 1)
-				 (display-line-numbers-mode -1)
 				 (adaptive-wrap-prefix-mode)))
+
 (add-hook 'mu4e-compose-mode-hook #'visual-fill-column-mode)
 
 (add-hook 'mu4e-compose-mode-hook (lambda ()
+				    (setq fill-column 72)
+				    (setq visual-fill-column-width 72)
 				    (setq visual-fill-column-center-text t)
 				    (visual-line-mode 1)
-				    (auto-fill-mode -1)
 				    (adaptive-wrap-prefix-mode)))
 
-;; (global-set-key (kbd "C-c o m") #'mu4e)
-(global-set-key (kbd "C-c o m") (lambda ()
-				  (interactive)
-				  (tab-bar-switch-to-tab "*mu4e-main*")
-				  (mu4e)))
+(keymap-set my/keymap "m" (lambda ()
+			    "Open mu4e"
+			    (interactive)
+			    (tab-bar-switch-to-tab "*mu4e-main*")
+			    (mu4e)))
 
 (setopt mu4e-completing-read-function completing-read-function)
 

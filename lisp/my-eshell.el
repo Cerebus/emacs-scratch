@@ -35,9 +35,7 @@ user's home directory."
 			  (my/project-eshell "Eshell")))
 
 ;; Keys
-(global-set-key (kbd "C-x p e") #'my/project-eshell)
-
-;;(define-key 'my-open-things-key-map (kbd "t") #'vterm)
+(keymap-set my/keymap "e" #'my/project-eshell)
 
 ;; Shells go to a popup
 (add-to-list 'display-buffer-alist '("^\*.*eshell\*" (display-buffer-in-side-window) (side . bottom)))
