@@ -72,7 +72,7 @@
 (load-theme 'modus-operandi t)
 
 ;;; Key issues
-(defvar my/keymap :doc "My leader map")
+(defvar-keymap my/keymap :doc "My leader map")
 (defvar my/leader-key "C-c m")
 (keymap-global-set my/leader-key my/keymap)
 
