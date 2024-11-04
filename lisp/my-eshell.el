@@ -35,7 +35,7 @@ user's home directory."
 			  (my/project-eshell "Eshell")))
 
 ;; Keys
-(keymap-set my/keymap "e" #'my/project-eshell)
+(keymap-global-set "C-x p e" #'my/project-eshell)
 
 ;; Shells go to a popup
 (add-to-list 'display-buffer-alist '("^\*.*eshell\*" (display-buffer-in-side-window) (side . bottom)))
