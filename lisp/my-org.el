@@ -64,10 +64,14 @@
 (with-eval-after-load 'org-glossary
   (org-glossary-set-export-spec 'latex 'glossary
     :backref ""
-    :backref-seperator "")
+    :backref-seperator ""
+    :letter-heading ""
+    :definition-structure "\\noindent *%d*\\emsp{}%v\\ensp{}%b\n")
   (org-glossary-set-export-spec 'latex 'acronym
     :backref ""
-    :backref-seperator ""))
+    :backref-seperator ""
+    :letter-heading ""
+    :definition-structure "\\noindent *%d*\\emsp{}%v\\ensp{}%b\n"))
 
 (require 'org-glossary)
 
