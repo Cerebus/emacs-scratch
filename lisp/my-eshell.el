@@ -10,6 +10,7 @@
 
 (defun my/do-buffer-eshell (buffer-dir)
   "Start or switch to an EShell in BUFFER-DIR."
+  (require 'eshell)
   (let* ((default-directory (expand-file-name buffer-dir))
 	 (eshell-buffer-name "*eshell*")
 	 (eshell-buffer (get-buffer eshell-buffer-name)))
@@ -36,6 +37,7 @@ user's home directory."
 
 ;; Keys
 (keymap-global-set "C-x p e" #'my/project-eshell)
+(keymap-set my/keymap "e" #'eshell)
 
 ;; Shells go to a popup
 (add-to-list 'display-buffer-alist '("^\*.*eshell\*" (display-buffer-in-side-window) (side . bottom)))
