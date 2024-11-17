@@ -21,11 +21,11 @@
 (add-to-list 'auto-mode-alist '("\\.go\'" . go-ts-mode))
 
 ;; Add gotest to embark.
-(add-to-list 'embark-pre-action-hooks '(go-gen-test-dwim embark--mark-target))
-
-(define-key embark-region-map (kbd "g t") #'go-gen-test-dwim)
-(define-key embark-defun-map (kbd "g t") #'go-gen-test-dwim)
-(define-key embark-defun-map (kbd "g r") #'go-test-current-test)
+(with-eval-after-load 'embark
+  (add-to-list 'embark-pre-action-hooks '(go-gen-test-dwim embark--mark-target))
+  (define-key embark-region-map (kbd "g t") #'go-gen-test-dwim)
+  (define-key embark-defun-map (kbd "g t") #'go-gen-test-dwim)
+  (define-key embark-defun-map (kbd "g r") #'go-test-current-test))
 
 ;; Because.
 (with-eval-after-load "go-mode"

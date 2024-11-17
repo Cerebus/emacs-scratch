@@ -26,7 +26,7 @@
 (setq-default mode-line-format nil)
 
 (use-package nano-theme
-  :config
+  :init
   (load-theme 'nano t)
   :custom
   (nano-fonts-use t)
@@ -76,7 +76,7 @@
 	       telephone-line-misc-info-segment
 	       telephone-line-major-mode-segment
 	       telephone-line-airline-position-segment))))
-  :config
+  :init
   (telephone-line-defsegment* my/status-segment ()
     `(""
       mode-line-modified))
