@@ -15,7 +15,7 @@
 
 ;; (add-hook 'prog-mode-hook 'format-all-mode)
 ;; (add-hook 'format-all-mode-hook 'format-all-ensure-formatter)
-(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+;; (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (with-eval-after-load 'eglot

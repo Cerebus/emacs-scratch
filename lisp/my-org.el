@@ -10,6 +10,15 @@
 ;; 		:value-type (symbol)))
 
 ;; Extra packages
+(use-package org-modern
+  :ensure t
+  :defer t
+  :hook
+  ((org-mode . org-modern-mode)
+   (org-agenda-finalize . org-modern-agenda))
+  :config
+  (global-org-modern-mode))
+
 (unless (package-installed-p 'org-fragtog)
   (package-install 'org-fragtog))
 
