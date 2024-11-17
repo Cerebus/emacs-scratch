@@ -17,7 +17,12 @@
 (unless (package-installed-p 'mermaid-mode)
    (package-install 'mermaid-mode))
 
-(customize-set-variable 'ob-mermaid-cli-path "/opt/homebrew/bin/mmdc")
+(use-package ob-mermaid
+  :defer t
+  :ensure t
+  :custom
+  (ob-mermaid-cli-path "/opt/homebrew/bin/mmdc"))
+
 (add-to-list 'org-babel-load-languages '(mermaid . t))
 (add-to-list 'org-src-lang-modes '("mermaid" . mermaid))
 
