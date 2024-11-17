@@ -103,7 +103,7 @@
 ;; (global-visual-wrap-prefix-mode 1)     ; TODO: do I want this or not?
 
 (modify-all-frames-parameters
- '((internal-border-width . 20)
+ '((internal-border-width . 24)
    (vertical-scroll-bars . nil)
    (right-divider-width . 12)
    (bottom-divider-width . 6)
