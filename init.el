@@ -71,6 +71,7 @@
     (customize-set-variable 'dired-use-ls-dired nil))
 
 (setenv "EDITOR" "emacsclient")
+(setenv "SSH_AUTH_SOCK" (expand-file-name "~/.gnupg/S.gpg-agent.ssh"))
 
 ;; (when (eq system-type 'darwin)		; TODO: want these or not?
 ;;   (setq ns-command-modifier 'meta
