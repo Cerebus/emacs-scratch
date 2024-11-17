@@ -18,6 +18,13 @@
     (require 'consult-eglot-embark)
     (consult-eglot-embark-mode)))
 
+(with-eval-after-load 'consult-flyspell
+  (customize-set-variable
+   'consult-flyspell-select-function
+   (lambda ()
+     (flyspell-correct-word-before-point)
+     (consult-flyspell))))
+
 ;; Example configuration for Consult
 (use-package consult
   :ensure t
