@@ -8,6 +8,7 @@ eln-cache
 eshell
 tree-sitter
 request
+history
 
 # Created by https://www.toptal.com/developers/gitignore/api/emacs,linux,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=emacs,linux,macos
