@@ -29,6 +29,8 @@
 ;; Graphviz
 (add-to-list 'org-babel-load-languages '(dot . t))
 
+(add-to-list 'my/org-babel-safe-evaluate-list 'plantuml)
+(add-to-list 'my/org-babel-safe-evaluate-list 'mermaid)
 ;; (defun my-org-confirm-babel-evaluate (lang body)
 ;;   (not (member lang '("plantuml" "mermaid"))))
 ;; (customize-set-variable 'org-confirm-babel-evaluate #'my-org-confirm-babel-evaluate)
