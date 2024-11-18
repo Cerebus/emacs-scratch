@@ -116,4 +116,14 @@
 
 (bind-key (kbd "C-c (") #'org-mark-ring-goto 'org-mode-map)
 
+(defcustom my/org-babel-safe-evaluate-list nil
+  "Safe languages to evaluate with org-babel."
+  :type 'list
+  :group 'user)
+
+(defun my/org-confirm-babel-evaluate (lang body)
+  (not (member (intern lang) my/org-babel-safe-evaluate-list)))
+
+(setq org-confirm-babel-evaluate #'my/org-confirm-babel-evaluate)
+
 (provide 'my-org)
