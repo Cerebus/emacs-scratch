@@ -206,6 +206,7 @@
   :init
   (corfu-terminal-mode +1))
 
+(keymap-global-set "M-`" 'other-frame)
 
 (provide 'my-emacs)
 ;;; my-completion.el ends here
