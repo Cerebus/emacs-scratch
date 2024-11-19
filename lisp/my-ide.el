@@ -16,7 +16,6 @@
 ;; (add-hook 'prog-mode-hook 'format-all-mode)
 ;; (add-hook 'format-all-mode-hook 'format-all-ensure-formatter)
 ;; (add-hook 'prog-mode-hook 'flyspell-prog-mode)
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (with-eval-after-load 'eglot
   (setq eglot-report-progress nil))
@@ -54,6 +53,7 @@
 (advice-add 'my/tab-new :after #'my/switch-to-scratch)
 
 (define-key ctl-x-5-map (kbd "2") #'my/make-frame-command)
+(keymap-global-set "M-n" 'my/make-frame-command)
 (define-key tab-prefix-map (kbd "2") #'my/tab-new)
 (define-key project-prefix-map (kbd "R") #'project-find-regexp)
 
