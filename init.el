@@ -74,11 +74,11 @@
 (setenv "EDITOR" "emacsclient")
 (setenv "SSH_AUTH_SOCK" (expand-file-name "~/.gnupg/S.gpg-agent.ssh"))
 
-;; (when (eq system-type 'darwin)		; TODO: want these or not?
-;;   (setq ns-command-modifier 'meta
-;; 	ns-option-modifier 'super
-;; 	ns-control-modifier 'control
-;; 	ns-function-modifier 'hyper))
+(when (eq system-type 'darwin)		; TODO: want these or not?
+  (setq ns-command-modifier 'meta
+	ns-option-modifier 'super
+	ns-control-modifier 'control
+	ns-function-modifier 'hyper))
 
 ;; Modalities
 (xterm-mouse-mode 1)
