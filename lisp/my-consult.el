@@ -18,8 +18,7 @@
     (require 'consult-eglot-embark)
     (consult-eglot-embark-mode)))
 
-(customize-set-variable
-   'consult-flyspell-select-function
+(setq consult-flyspell-select-function
    (lambda ()
      (flyspell-correct-word-before-point)
      (consult-flyspell)))
