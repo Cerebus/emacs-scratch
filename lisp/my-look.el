@@ -99,7 +99,7 @@
       tab-bar-close-button-show nil
       tab-bar-new-tab-choice "*scratch*")
 
-(global-visual-line-mode 1)		; TODO: maybe only text modes?
+(add-hook 'text-mode-hook #'visual-line-mode)
 ;; (global-visual-wrap-prefix-mode 1)     ; TODO: do I want this or not?
 
 (modify-all-frames-parameters
