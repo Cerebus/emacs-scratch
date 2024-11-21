@@ -162,7 +162,12 @@
   :vc (:url "https://github.com/emacsmirror/consult-flyspell")
   :bind
   (:map goto-map
-	("s" . consult-flyspell)))
+	("s" . consult-flyspell))
+  :config
+  (setq consult-flyspell-select-function
+   (lambda ()
+     (flyspell-correct-word-before-point)
+     (consult-flyspell))))
 
 (use-package embark
   :ensure t
