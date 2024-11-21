@@ -114,7 +114,7 @@
 (add-hook 'org-mode-hook #'flyspell-mode)
 (add-hook 'org-mode-hook #'org-glossary-mode)
 
-(bind-key (kbd "C-c (") #'org-mark-ring-goto 'org-mode-map)
+(keymap-set org-mode-map "M-[" 'org-mark-ring-goto)
 
 (defcustom my/org-babel-safe-evaluate-list nil
   "Safe languages to evaluate with org-babel."
