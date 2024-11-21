@@ -36,11 +36,14 @@
 (unless (package-installed-p 'flymake-proselint)
   (package-install 'flymake-proselint))
 
+(use-package flymake-vale
+  :vc (:url "https://github.com/tpeacock19/flymake-vale")
+  :hook (text-mode . flymake-vale-load))
+
 (with-eval-after-load 'flymake
   (flymake-proselint-setup))
 
 (add-hook 'text-mode-hook 'flymake-mode)
-(add-hook 'text-mode-hook 'flymake-proselint-setup)
 
 (defun my/org-ispell-setup ()
   (make-local-variable 'ispell-skip-region-alist)
