@@ -67,10 +67,10 @@
      (faded . (nano-faded-i . nano-subtle))))
   (telephone-line-lhs
    '((modified . (my/status-segment))
-     (faded . (telephone-line-process-segment
-	       telephone-line-project-segment
-	       telephone-line-vc-segment
-	       my/buffer-segment))))
+     (faded. (telephone-line-process-segment
+	      telephone-line-project-segment
+	      telephone-line-vc-segment
+	      my/buffer-segment))))
   (telephone-line-rhs
    '((faded . (telephone-line-flymake-segment
 	       telephone-line-misc-info-segment
@@ -92,8 +92,8 @@
   (telephone-line-mode 1))
 
 (custom-theme-set-faces 'user
- '(nano-vertico-prompt-face
-   ((t :inherit nano-critical-i))))
+			'(nano-vertico-prompt-face
+			  ((t :inherit nano-critical-i))))
 
 (setq tab-bar-show 1
       tab-bar-close-button-show nil
