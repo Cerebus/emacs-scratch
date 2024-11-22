@@ -213,5 +213,9 @@
 
 (keymap-global-set "M-`" 'other-frame)
 
+;; TODO find a better solution as this doesn't seem to work in all segments.
+(define-key mode-line-major-mode-keymap [header-line]
+            (lookup-key mode-line-major-mode-keymap [mode-line]))
+
 (provide 'my-emacs)
 ;;; my-completion.el ends here
