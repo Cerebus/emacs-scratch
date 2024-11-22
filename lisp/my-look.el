@@ -67,7 +67,7 @@
      (faded . (nano-faded-i . nano-subtle))))
   (telephone-line-lhs
    '((modified . (my/status-segment))
-     (faded. (telephone-line-process-segment
+     (faded . (telephone-line-process-segment
 	      telephone-line-project-segment
 	      telephone-line-vc-segment
 	      my/buffer-segment))))
