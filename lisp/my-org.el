@@ -38,7 +38,7 @@
 
 (use-package flymake-vale
   :vc (:url "https://github.com/tpeacock19/flymake-vale")
-  :hook (text-mode . flymake-vale-load))
+  :hook (org-mode . flymake-vale-load))
 
 (with-eval-after-load 'flymake
   (flymake-proselint-setup))
