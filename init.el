@@ -78,7 +78,9 @@
   (setq ns-command-modifier 'meta
 	ns-option-modifier 'super
 	ns-control-modifier 'control
-	ns-function-modifier 'hyper))
+	ns-function-modifier 'hyper)
+  ;; Is there a better hackaround?
+  (define-key key-translation-map (kbd "<M-mouse-1>")  (kbd "<mouse-2>")))
 
 ;; Modalities
 (xterm-mouse-mode 1)
