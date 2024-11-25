@@ -38,6 +38,11 @@
   (tab-bar-tab-inactive ((t (:inherit nano-subtle))))
   :vc (:url "https://github.com/rougier/nano-theme"))
 
+(use-package almost-mono-themes
+  :ensure
+  :init
+  (load-theme 'almost-mono-white t))
+
 (use-package nano-vertico
   :vc (:url "https://github.com/rougier/nano-vertico")
   :custom
@@ -74,8 +79,8 @@
   (telephone-line-rhs
    '((faded . (telephone-line-flymake-segment
 	       telephone-line-misc-info-segment
-	       telephone-line-major-mode-segment
-	       telephone-line-airline-position-segment))))
+	       telephone-line-major-mode-segment))
+     (modified . (telephone-line-airline-position-segment))))
   :init
   (telephone-line-defsegment* my/status-segment ()
     `(""
@@ -85,7 +90,10 @@
       mode-line-client
       ,(telephone-line-raw mode-line-buffer-identification t)))
   (defun my/modified-face (active)
-    (cond ((not active) 'nano-subtle)
+    (cond ((not active)
+	   (if (buffer-modified-p)
+	       'nano-popout-i
+	     'nano-subtle))
 	  ((buffer-modified-p)
 	   'nano-critical-i)
 	  (t 'nano-subtle)))
