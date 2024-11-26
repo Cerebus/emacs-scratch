@@ -171,7 +171,6 @@
 
 (use-package embark
   :ensure t
-  :after (consult)
   :bind
   (([remap desribe-bindings] . embark-bindings)
    ("C-." . embark-act)
