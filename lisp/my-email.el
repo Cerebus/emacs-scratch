@@ -32,15 +32,15 @@
 
 (setopt mu4e-completing-read-function completing-read-function)
 
-(defun my/mu4e-quit ()
-  (interactive)
-  (tab-close)
-  (call-interactively 'mu4e-quit))
+;; (defun my/mu4e-quit ()
+;;   (interactive)
+;;   (tab-close)
+;;   (call-interactively 'mu4e-quit))
 
 (with-eval-after-load "mu4e"
   (require 'mailcap)
   (require 'mu4e-icalendar)
-  (substitute-key-definition 'mu4e-quit 'my/mu4e-quit mu4e-main-mode-map)
+  ; (substitute-key-definition 'mu4e-quit 'my/mu4e-quit mu4e-main-mode-map)
   (mailcap-parse-mimetypes (concat user-emacs-directory "mime.types") t)
   (mailcap-parse-mailcap (concat user-emacs-directory "mailcaps"))
   (epa-file-enable)
