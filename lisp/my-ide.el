@@ -44,8 +44,13 @@
 (defalias 'my/make-frame-command #'make-frame-command)
 (defalias 'my/tab-new #'tab-new)
 
+(defun my/tab-close (&rest r)
+  (interactive)
+  (if (> 1 (length (tab-bar-tabs)))
+      (tab-close)))
+
 ;; Close tab when killing project buffers
-;; (advice-add 'project-kill-buffers :after 'tab-close)
+(advice-add 'project-kill-buffers :after 'my/tab-close)
 
 ;; Perform the actual switch with advice rather than hooks b/c we want tools like project.el to be able to control the
 ;; displayed buffer.

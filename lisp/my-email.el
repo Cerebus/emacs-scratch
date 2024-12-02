@@ -37,6 +37,8 @@
 ;;   (tab-close)
 ;;   (call-interactively 'mu4e-quit))
 
+(advice-add 'mu4e-quit :after 'my/tab-close)
+
 (with-eval-after-load "mu4e"
   (require 'mailcap)
   (require 'mu4e-icalendar)
