@@ -1,8 +1,8 @@
 ;;; mu4e for great justice!
 
 ;; Fun complications; mu4e distributes with mu, so installation varies a bit.
-(when (eq system-type 'darwin)
-  (add-to-list 'load-path "/opt/homebrew/share/emacs/site-lisp/mu/mu4e/")) ; brew links it here
+;; (when (eq system-type 'darwin)
+;;   (add-to-list 'load-path "/opt/homebrew/share/emacs/site-lisp/mu/mu4e/")) ; brew links it here
 
 (autoload 'mu4e "mu4e" "Mu Email client" t)
 
