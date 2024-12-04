@@ -48,6 +48,9 @@
 
 ;;; Code:
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(when (eq system-type 'darwin)
+  (add-to-list 'load-path "/opt/homebrew/share/emacs/site-lisp/mu/mu4e/")) ; brew links it here
+
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
   (load custom-file))
