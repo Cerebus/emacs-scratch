@@ -27,6 +27,9 @@
 (setq use-dialog-box nil
       use-file-dialog nil)
 
+;; (use-package svg-lib
+;;   :ensure t)
+
 (use-package nano-theme
   :init
   (load-theme 'nano t)
@@ -44,10 +47,12 @@
 
 (use-package nano-modeline
   :vc (:url "https://github.com/rougier/nano-modeline")
+  :commands nano-modeline-text-mode
+  :init
+  (nano-modeline-text-mode t)
   :custom
   (nano-modeline-position 'nano-modeline-header)
   :config
-  (nano-modeline-text-mode 1)
   (defun my/nano-modeline-flymake ()
     "Flymake information."
     (if (and (boundp 'flymake-mode) flymake-mode)
