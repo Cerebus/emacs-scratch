@@ -99,5 +99,10 @@
 (advice-add 'python-shell-switch-to-shell :around #'my-python-shell-save-buffer)
 (advice-add 'my-python-shell-switch-to-buffer :around #'my-python-shell-save-buffer)
 
+;; pytest
+(use-package python-pytest
+  :bind (:map python-ts-mode-map
+	      ("C-c t" . python-pytest-dispatch)))
+
 ;;; END
 (provide 'my-python)
