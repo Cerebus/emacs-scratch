@@ -100,6 +100,8 @@
                    `(lambda (c)
                   (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
 
+(add-to-list 'org-babel-load-languages '(shell . t))
+
 ;; Init org-babel
 (add-hook 'org-mode-hook (lambda ()
 			   (org-babel-do-load-languages 'org-babel-do-load-languages org-babel-load-languages)))
