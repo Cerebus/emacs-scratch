@@ -70,7 +70,7 @@
 \\usepackage[style=ieee,sorting=none]{biblatex}
 \\usepackage[inkscapelatex=false]{svg}
 \\usepackage{capt-of}
-\\usepackage[colorlinks,linkcolor=blue,citecolor=blue,urlcolor=red,plainpages=false,pdfusetitle]{hyperref}
+\\usepackage[colorlinks,linkcolor=blue,citecolor=blue,urlcolor=red,plainpages=false,hyperfootnotes=false,pdfusetitle]{hyperref}
 [NO-DEFAULT-PACKAGES]"
 		 ("\\section{%s}" . "\\section*{%s}")
 		 ("\\subsection{%s}" . "\\subsection*{%s}")
